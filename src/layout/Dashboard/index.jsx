@@ -1,14 +1,19 @@
 import React from 'react';
 
 import dashboardRoutes from 'routes';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 import SideBar from 'layout/SideBar';
 
 import { Wrapper, Main } from './style';
 
 const Dashboard = () => (
-  <BrowserRouter>
+  <Router>
     <Wrapper>
       {/* prettier-ignore */}
       <SideBar
@@ -27,7 +32,7 @@ const Dashboard = () => (
         </Switch>
       </Main>
     </Wrapper>
-  </BrowserRouter>
+  </Router>
 );
 
 export default Dashboard;

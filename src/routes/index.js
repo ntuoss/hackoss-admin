@@ -7,7 +7,7 @@ import CoursePage from 'containers/Course';
 // prettier-ignore
 export default [
   {
-    path: '/dashboard',
+    path: '/',
     exact: true,
     sidebarName: 'Dashboard',
     navbarName: 'Outfox Dashboard',
@@ -29,8 +29,8 @@ export default [
     component: CoursePage,
   },
   { redirect: true, 
-    path: '/', 
-    to: '/dashboard', 
+    path: '/dashboard', 
+    to: '/', 
     navbarName: 'Redirect' 
   },
 ];

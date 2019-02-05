@@ -86,6 +86,7 @@ const ListItem = styled(ListItemBase)`
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
+    box-shadow: 0 0 0 0 'transparent';
     &,
     &:hover,
     &:focus,
