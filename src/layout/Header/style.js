@@ -5,7 +5,7 @@ import {
   Toolbar as ToolbarBase,
 } from '@material-ui/core';
 
-import { container, lightFont } from 'styles/variables';
+import { container, defaultFont } from 'styles/variables';
 
 const AppBar = styled(AppBarBase)`
   && {
@@ -31,7 +31,7 @@ const Toolbar = styled(ToolbarBase)`
 `;
 
 const Title = styled.h1`
-  ${lightFont}
+  ${defaultFont}
   font-size: 1rem;
   user-select: none;
   cursor: inherit;

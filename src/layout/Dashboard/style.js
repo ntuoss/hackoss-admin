@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   position: relative;
   top: 0;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const Main = styled.main`
@@ -14,7 +14,6 @@ const Main = styled.main`
   float: right;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 `;
 
 export { Wrapper, Main };

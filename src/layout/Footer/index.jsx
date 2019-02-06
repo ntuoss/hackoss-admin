@@ -1,47 +1,48 @@
 import React from 'react';
+import A from 'components/A';
 import { Wrapper, List, ListItem } from './style';
 
 const Footer = () => (
   <Wrapper>
     <List>
       <ListItem>
-        <a href='#home'>Home</a>
+        <A href='#home'>Home</A>
       </ListItem>
       <ListItem>
-        <a
+        <A
           target='_blank'
           rel='noopener noreferrer'
           href='https://hackoss.firebaseapp.com'
         >
           About us
-        </a>
+        </A>
       </ListItem>
       <ListItem>
-        <a
+        <A
           target='_blank'
           rel='noopener noreferrer'
           href='https://www.eventbrite.sg/o/ntu-open-source-society-17711580227'
         >
           Event
-        </a>
+        </A>
       </ListItem>
       <ListItem>
-        <a
+        <A
           target='_blank'
           rel='noopener noreferrer'
           href='https://medium.com/@zaynjarvis'
         >
           Medium
-        </a>
+        </A>
       </ListItem>
       <ListItem>
-        <a
+        <A
           target='_blank'
           rel='noopener noreferrer'
           href='https://github.com/ntuoss'
         >
           Github
-        </a>
+        </A>
       </ListItem>
     </List>
     <div>
