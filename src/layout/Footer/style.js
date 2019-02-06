@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { lightFont } from 'styles/variables';
+import { defaultFont } from 'styles/variables';
 
 const Wrapper = styled.footer`
-  ${lightFont};
+  ${defaultFont};
   position: absolute;
   bottom: 0;
   left: 0;

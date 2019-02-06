@@ -2,22 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import Normalize from './normalize';
-
 const GlobalStyle = createGlobalStyle`
-  ${Normalize};
   html {
     font-size:1vw;
     color: ${props => props.theme.primaryColor};
     background: ${props => props.theme.backgroundColor};
     overflow: hidden;
     height: 100%;
-    
   }
   a {
     text-decoration: none;
   }
-  
 `;
 
 const theme = {

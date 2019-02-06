@@ -45,12 +45,6 @@ const defaultFont = css({
   lineHeight: '1.5em',
 });
 
-const lightFont = css({
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontWeight: '100',
-  lineHeight: '1.5em',
-});
-
 const primaryColor = '#9c27b0';
 const warningColor = '#ff9800';
 const dangerColor = '#f44336';
@@ -187,7 +181,6 @@ export {
   footerShadow,
   card,
   defaultFont,
-  lightFont,
   primaryColor,
   warningColor,
   dangerColor,

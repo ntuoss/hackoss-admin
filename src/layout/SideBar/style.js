@@ -14,9 +14,8 @@ import {
 import {
   drawerWidth,
   highlightButton,
-  lightFont,
+  defaultFont,
   boxShadow,
-  primaryBoxShadow,
 } from 'styles/variables';
 
 const Drawer = styled(DrawerBase).attrs({
@@ -43,7 +42,7 @@ const Drawer = styled(DrawerBase).attrs({
 `;
 
 const SideBarHeader = styled.div`
-  ${lightFont}
+  ${defaultFont}
   margin: 0;
   position: relative;
   padding: 5px 15px;
@@ -82,7 +81,7 @@ const NavLink = styled(NavLinkBase)`
 
 const ListItem = styled(ListItemBase)`
   && {
-    ${lightFont}
+    ${defaultFont}
     position: relative;
     transition: 0.7;
     margin: 10px 15px;
@@ -118,7 +117,7 @@ const ListItemIcon = styled(ListItemIconBase)`
 
 const ListItemText = styled(ListItemTextBase)`
   & > span {
-    ${lightFont}
+    ${defaultFont}
     font-size: 0.8rem;
     line-height: 1rem;
     color: ${props => props.theme.secondaryColor};

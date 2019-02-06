@@ -5,16 +5,16 @@ import {
   MenuItem as MenuItemBase,
 } from '@material-ui/core';
 
-import { lightFont, highlightButton } from 'styles/variables';
+import { defaultFont, highlightButton } from 'styles/variables';
 
 const MenuList = styled(MenuListBase)`
   position: relative;
   max-height: 20rem;
-  overflow: scroll;
+  overflow: auto;
 `;
 const MenuItem = styled(MenuItemBase)`
   && {
-    ${lightFont}
+    ${defaultFont}
     font-size: 0.8rem;
     font-size: 13px;
     padding: 10px 20px;
