@@ -4,10 +4,14 @@ import DashboardPage from 'containers/Dashboard';
 import UserPage from 'containers/User';
 import CoursePage from 'containers/Course';
 
+export const DASHBOARD = '/';
+export const USER = '/user';
+export const COURSE = '/course';
+
 // prettier-ignore
 export default [
   {
-    path: '/',
+    path: DASHBOARD,
     exact: true,
     sidebarName: 'Dashboard',
     navbarName: 'Outfox Dashboard',
@@ -15,14 +19,14 @@ export default [
     component: DashboardPage,
   },
   {
-    path: '/user',
-    sidebarName: 'My Profile',
-    navbarName: 'Profile',
+    path: USER,
+    headerRoute: true,
+    navbarName: 'User Profile',
     icon: Person,
     component: UserPage,
   },
   {
-    path: '/course',
+    path: COURSE,
     sidebarName: 'Crouses',
     navbarName: 'Courses',
     icon: Class,
@@ -30,7 +34,7 @@ export default [
   },
   { redirect: true, 
     path: '/dashboard', 
-    to: '/', 
+    to: DASHBOARD, 
     navbarName: 'Redirect' 
   },
 ];
