@@ -39,11 +39,19 @@ const card = css({
   background: '#fff',
 });
 
-const defaultFont = css({
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontWeight: '300',
-  lineHeight: '1.5em',
-});
+const fontBase = css`
+  font-weight: 300;
+  line-height: 1.5em;
+`;
+const defaultFont = css`
+  ${fontBase}
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+`;
+
+const defaultHeadline = css`
+  ${fontBase}
+  font-family: serif;
+`;
 
 const primaryColor = '#9c27b0';
 const warningColor = '#ff9800';
@@ -181,6 +189,7 @@ export {
   footerShadow,
   card,
   defaultFont,
+  defaultHeadline,
   primaryColor,
   warningColor,
   dangerColor,

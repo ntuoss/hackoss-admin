@@ -23,9 +23,9 @@ const Sidebar = props => {
     <Drawer anchor='left' variant='permanent' open>
       <SideBarHeader>
         <Logo size='3.2rem' />
-        {title}
+        <span>{title}</span>
       </SideBarHeader>
-      <BreakLine />
+      {/* <BreakLine /> */}
       <List>
         {routes.map(item => {
           if (item.redirect || item.headerRoute) return null;

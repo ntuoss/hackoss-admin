@@ -20,7 +20,7 @@ const Dashboard = () => (
       {/* prettier-ignore */}
       <SideBar
         routes={dashboardRoutes}
-        title="NTU Outfox"
+        title="NTU Iceberx"
       />
       <Main>
         <Header routes={dashboardRoutes} />

@@ -14,7 +14,7 @@ export default [
     path: DASHBOARD,
     exact: true,
     sidebarName: 'Dashboard',
-    navbarName: 'Outfox Dashboard',
+    navbarName: 'Dashboard',
     icon: Dashboard,
     component: DashboardPage,
   },

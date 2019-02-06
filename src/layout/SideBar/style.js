@@ -15,6 +15,7 @@ import {
   drawerWidth,
   highlightButton,
   defaultFont,
+  defaultHeadline,
   boxShadow,
 } from 'styles/variables';
 
@@ -42,7 +43,7 @@ const Drawer = styled(DrawerBase).attrs({
 `;
 
 const SideBarHeader = styled.div`
-  ${defaultFont}
+  ${defaultHeadline}
   margin: 0;
   position: relative;
   padding: 5px 15px;
@@ -52,12 +53,13 @@ const SideBarHeader = styled.div`
   justify-content: flex-start;
   align-items: center;
   color: ${props => props.theme.secondaryColor};
+  box-shadow: 0 1px 7px -3px #fff;
   user-select: none;
   cursor: inherit;
   & img {
-    margin: 0 1rem;
+    margin: 0 0.8rem;
   }
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 `;
 
 const BreakLine = styled.hr`
