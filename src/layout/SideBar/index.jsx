@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import Logo from 'components/Logo';
 import { Icon } from '@material-ui/core';
 
+import Logo from 'components/Logo';
 import {
   Drawer,
   SideBarHeader,
+  BreakLine,
   List,
   NavLink,
   ListItem,
@@ -21,12 +22,13 @@ const Sidebar = props => {
     // TODO: responsive design with <Hidden />
     <Drawer anchor='left' variant='permanent' open>
       <SideBarHeader>
-        <Logo size='4rem' />
+        <Logo size='3rem' />
         {title}
       </SideBarHeader>
+      <BreakLine />
       <List>
         {routes.map(item => {
-          if (item.redirect) return null;
+          if (item.redirect || item.headerRoute) return null;
           return (
             <NavLink location={location} to={item.path} key={item.path}>
               <ListItem button>

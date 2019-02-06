@@ -13,7 +13,8 @@ import {
 
 import {
   drawerWidth,
-  defaultFont,
+  highlightButton,
+  lightFont,
   boxShadow,
   primaryBoxShadow,
 } from 'styles/variables';
@@ -42,35 +43,37 @@ const Drawer = styled(DrawerBase).attrs({
 `;
 
 const SideBarHeader = styled.div`
-  ${defaultFont}
+  ${lightFont}
+  margin: 0;
   position: relative;
-  padding: 15px;
+  padding: 5px 15px;
   z-index: 1;
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
   color: ${props => props.theme.secondaryColor};
+  user-select: none;
+  cursor: inherit;
   & img {
-    padding-right: 1.5rem;
+    margin: 0 1rem;
   }
-  font-size: 2rem;
+  font-size: 1.2rem;
 `;
 
+const BreakLine = styled.hr`
+  width: 80%;
+  border-top: 0.02pt solid ${props => props.theme.secondaryColor};
+`;
 const List = styled(ListBase)`
   margin-top: 20px;
   list-style: none;
   position: unset;
 `;
 
-const highlight = css`
-  background: ${props => props.theme.highlightColor};
-  box-shadow: 0 10px 20px -5px ${props => props.theme.highlightColor};
-`;
-
 const NavLink = styled(NavLinkBase)`
   ${props =>
-    props.location.pathname === props.to ? highlight : 'transparent'};
+    props.location.pathname === props.to ? highlightButton : 'transparent'};
   &:hover {
     background: ${props => props.theme.highlightColor};
   }
@@ -78,7 +81,7 @@ const NavLink = styled(NavLinkBase)`
 
 const ListItem = styled(ListItemBase)`
   && {
-    ${defaultFont}
+    ${lightFont}
     position: relative;
     transition: 0.7;
     margin: 10px 15px;
@@ -102,8 +105,9 @@ const ListItemIcon = styled(ListItemIconBase)`
   & > svg {
     width: 24px;
     height: 30px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 1rem;
+
     float: left;
     text-align: center;
     vertical-align: middle;
@@ -113,8 +117,8 @@ const ListItemIcon = styled(ListItemIconBase)`
 
 const ListItemText = styled(ListItemTextBase)`
   & > span {
-    ${defaultFont}
-    font-size: 1rem;
+    ${lightFont}
+    font-size: 0.8rem;
     line-height: 1rem;
     color: ${props => props.theme.secondaryColor};
     text-decoration: none;
@@ -124,6 +128,7 @@ const ListItemText = styled(ListItemTextBase)`
 export {
   Drawer,
   SideBarHeader,
+  BreakLine,
   List,
   NavLink,
   ListItem,
