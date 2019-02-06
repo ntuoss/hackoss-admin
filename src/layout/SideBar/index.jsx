@@ -22,7 +22,7 @@ const Sidebar = props => {
     // TODO: responsive design with <Hidden />
     <Drawer anchor='left' variant='permanent' open>
       <SideBarHeader>
-        <Logo size='3rem' />
+        <Logo size='3.2rem' />
         {title}
       </SideBarHeader>
       <BreakLine />

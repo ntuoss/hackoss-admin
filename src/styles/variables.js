@@ -35,6 +35,12 @@ const defaultFont = css({
   lineHeight: '1.5em',
 });
 
+const lightFont = css({
+  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  fontWeight: '100',
+  lineHeight: '1.5em',
+});
+
 const primaryColor = '#9c27b0';
 const warningColor = '#ff9800';
 const dangerColor = '#f44336';
@@ -116,6 +122,14 @@ const defaultBoxShadow = css({
   transition: 'all 150ms ease 0s',
 });
 
+// prettier-ignore
+const highlightButton = css`
+  background: ${props => props.theme.highlightColor};
+  box-shadow: 0 3px 6px -5px ${props => props.theme.highlightColor},
+              0 5px 40px -5px ${props => props.theme.highlightColor};
+  transform: scale(1.03);
+`;
+
 const title = css({
   color: '#3C4858',
   textDecoration: 'none',
@@ -161,6 +175,7 @@ export {
   boxShadow,
   card,
   defaultFont,
+  lightFont,
   primaryColor,
   warningColor,
   dangerColor,
@@ -169,6 +184,7 @@ export {
   roseColor,
   grayColor,
   primaryBoxShadow,
+  highlightButton,
   infoBoxShadow,
   successBoxShadow,
   warningBoxShadow,

@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import SideBar from 'layout/SideBar';
+import Header from 'layout/Header';
 
 import { Wrapper, Main } from './style';
 
@@ -18,9 +19,10 @@ const Dashboard = () => (
       {/* prettier-ignore */}
       <SideBar
         routes={dashboardRoutes}
-        title="Outfox"
+        title="NTU Outfox"
       />
       <Main>
+        <Header routes={dashboardRoutes} />
         <Switch>
           {dashboardRoutes.map(prop =>
             prop.redirect ? (

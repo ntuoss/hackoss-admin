@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'components/Image';
 import styled from 'styled-components';
-import logo from 'assets/Logo.png';
+import logo from 'assets/Logo_64.png';
 
+// TODO: implement logic to lazy loading the logo
 const LogoBase = props => <Image src={logo} alt='logo' {...props} />;
 
 const Logo = styled(LogoBase)`

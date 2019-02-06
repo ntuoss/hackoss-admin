@@ -10,10 +10,14 @@ const GlobalStyle = createGlobalStyle`
     font-size:1vw;
     color: ${props => props.theme.primaryColor};
     background: ${props => props.theme.backgroundColor};
+    overflow: hidden;
+    height: 100%;
+    
   }
   a {
     text-decoration: none;
   }
+  
 `;
 
 const theme = {

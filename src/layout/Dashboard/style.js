@@ -12,6 +12,8 @@ const Main = styled.main`
   position: relative;
   float: right;
   max-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export { Wrapper, Main };
