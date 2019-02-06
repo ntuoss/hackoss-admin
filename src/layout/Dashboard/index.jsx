@@ -10,6 +10,7 @@ import {
 
 import SideBar from 'layout/SideBar';
 import Header from 'layout/Header';
+import Footer from 'layout/Footer';
 
 import { Wrapper, Main } from './style';
 
@@ -32,6 +33,7 @@ const Dashboard = () => (
             ),
           )}
         </Switch>
+        <Footer />
       </Main>
     </Wrapper>
   </Router>

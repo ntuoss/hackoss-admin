@@ -65,6 +65,7 @@ const BreakLine = styled.hr`
   width: 80%;
   border-top: 0.02pt solid ${props => props.theme.secondaryColor};
 `;
+
 const List = styled(ListBase)`
   margin-top: 20px;
   list-style: none;

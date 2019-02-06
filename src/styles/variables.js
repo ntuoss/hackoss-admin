@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-
+// Restructure the code in css (literal string)
 const drawerWidth = 260;
 
 const transition = css({
@@ -13,10 +13,20 @@ const container = css({
   marginLeft: 'auto',
 });
 
-const boxShadow = css({
-  boxShadow:
-    '0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
-});
+const page = css`
+  min-height: 100vh;
+`;
+
+const boxShadow = css`
+  /* prettier-ignore */
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42),
+              0 4px 25px 0px rgba(0, 0, 0, 0.12), 
+              0 8px 10px -5px rgba(0, 0, 0, 0.2);
+`;
+
+const footerShadow = css`
+  box-shadow: 0 -10px 20px -12px #0003;
+`;
 
 const card = css({
   display: 'inline-block',
@@ -172,7 +182,9 @@ export {
   drawerWidth,
   transition,
   container,
+  page,
   boxShadow,
+  footerShadow,
   card,
   defaultFont,
   lightFont,
