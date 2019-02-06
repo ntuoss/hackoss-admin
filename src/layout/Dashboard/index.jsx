@@ -2,7 +2,7 @@ import React from 'react';
 
 import dashboardRoutes from 'routes';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
