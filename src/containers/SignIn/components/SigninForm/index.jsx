@@ -4,10 +4,11 @@ import {
   Input,
   InputLabel,
   InputAdornment,
-  FormHelperText,
   Button,
   IconButton,
 } from '@material-ui/core';
+
+import FormField from 'components/FormField';
 import { Formik, Field } from 'formik';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
@@ -56,6 +57,10 @@ class Signin extends PureComponent {
             .then(() => {
               setSubmitting(false);
               history.push(DASHBOARD);
+            })
+            .catch(e => {
+              alert(e);
+              setSubmitting(false);
             });
         }}
       >
@@ -65,15 +70,7 @@ class Signin extends PureComponent {
               type='email'
               name='email'
               render={({ field }) => (
-                <FormControl error={!!(touched.email && errors.email)}>
-                  <InputLabel htmlFor='email'>Email</InputLabel>
-                  <Input autoComplete='off' id='email' {...field} />
-                  {touched.email && errors.email && (
-                    <FormHelperText id='component-error-text'>
-                      {errors.email}
-                    </FormHelperText>
-                  )}
-                </FormControl>
+                <FormField keyword='email' {...{ errors, touched, ...field }} />
               )}
             />
             <Field
