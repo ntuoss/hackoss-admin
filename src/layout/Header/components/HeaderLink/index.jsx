@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import IconButton from '@material-ui/core/IconButton';
-import Person from '@material-ui/icons/Person';
 import Dashboard from '@material-ui/icons/Dashboard';
 
-import { DASHBOARD, USER } from 'routes';
+import { DASHBOARD } from 'routes';
 import Notification from '../Notification';
+import UserLink from '../UserLink';
 
 import Wrapper from './style';
 
@@ -18,11 +18,7 @@ const HeaderLinks = () => (
         <Dashboard />
       </IconButton>
     </Link>
-    <Link to={USER}>
-      <IconButton>
-        <Person />
-      </IconButton>
-    </Link>
+    <UserLink />
   </Wrapper>
 );
 export default HeaderLinks;

@@ -8,7 +8,6 @@ import Logo from 'components/Logo';
 import {
   Drawer,
   SideBarHeader,
-  BreakLine,
   List,
   NavLink,
   ListItem,
@@ -25,10 +24,9 @@ const Sidebar = props => {
         <Logo size='3.2rem' />
         <span>{title}</span>
       </SideBarHeader>
-      {/* <BreakLine /> */}
       <List>
         {routes.map(item => {
-          if (item.redirect || item.headerRoute) return null;
+          if (item.redirect || item.headerRoute || !item.path) return null;
           return (
             <NavLink location={location} to={item.path} key={item.path}>
               <ListItem button>
