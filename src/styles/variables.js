@@ -15,6 +15,7 @@ const container = css({
 
 const page = css`
   min-height: 100vh;
+  width: 100%;
 `;
 
 const boxShadow = css`

@@ -12,6 +12,14 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    &,
+    &:hover,
+    &:focus,
+    &:visited {
+      color: ${props => props.theme.primaryColor};
+      background: inherit;
+      box-shadow: inherit;
+    }
   }
 `;
 

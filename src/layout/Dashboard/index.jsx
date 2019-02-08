@@ -1,42 +1,36 @@
 import React from 'react';
-
-import dashboardRoutes from 'routes';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import SideBar from 'layout/SideBar';
 import Header from 'layout/Header';
 import Footer from 'layout/Footer';
 
+import NotFoundPage from 'containers/NotFound';
+import { APP_ROUTE } from 'routes';
 import { Wrapper, Main } from './style';
 
 const Dashboard = () => (
-  <Router>
-    <Wrapper>
-      {/* prettier-ignore */}
-      <SideBar
-        routes={dashboardRoutes}
-        title="NTU Iceberx"
-      />
-      <Main>
-        <Header routes={dashboardRoutes} />
-        <Switch>
-          {dashboardRoutes.map(prop =>
-            prop.redirect ? (
-              <Redirect from={prop.path} to={prop.to} key={prop.path} />
-            ) : (
-              <Route {...prop} key={prop.path} />
-            ),
-          )}
-        </Switch>
-        <Footer />
-      </Main>
-    </Wrapper>
-  </Router>
+  <Wrapper>
+    {/* prettier-ignore */}
+    <SideBar
+      routes={APP_ROUTE}
+      title="NTU Iceberx"
+    />
+    <Main>
+      <Header routes={APP_ROUTE} />
+      <Switch>
+        {APP_ROUTE.map(prop =>
+          prop.redirect ? (
+            <Redirect from={prop.path} to={prop.to} key={prop.path} />
+          ) : (
+            <Route {...prop} key={prop.path} />
+          ),
+        )}
+        <Route component={NotFoundPage} />
+      </Switch>
+      <Footer />
+    </Main>
+  </Wrapper>
 );
 
 export default Dashboard;
