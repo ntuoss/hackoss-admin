@@ -74,9 +74,9 @@ class UserLink extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <MenuList role='menu'>
-                      <MenuItem>
-                        <Link to={USER}>My Profile</Link>
-                      </MenuItem>
+                      <Link to={USER}>
+                        <MenuItem>My Profile</MenuItem>
+                      </Link>
                       <MenuItem onClick={firebase.signout}>SignOut</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
