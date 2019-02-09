@@ -7,7 +7,7 @@ const Form = styled(FormBase)`
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
-  width: 20rem;
+  width: ${props => props.width || '20rem'};
 `;
 const FormControl = styled(FormControlBase)`
   && {

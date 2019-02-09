@@ -4,13 +4,10 @@ import FormBase from 'containers/EventForm/utils/FormBase';
 import { createPerson } from './function';
 
 const config = [
-  { key: 'avatarUrl', value: '' },
-  { key: 'name', value: '' },
-  { key: 'websiteUrl', value: '' },
-  { key: 'githubUrl', value: '' },
-  { key: 'about', value: '', multiline: true },
+  { key: 'title', value: '' },
+  { key: 'imageUrl', value: '' },
+  { key: 'artistId', value: '' },
 ];
-
 const PersonForm = () => <FormBase config={config} callback={createPerson} />;
 
 export default PersonForm;

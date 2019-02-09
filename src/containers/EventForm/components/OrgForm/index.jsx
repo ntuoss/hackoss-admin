@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FormBase from 'containers/EventForm/utils/FormBase';
-import { createPerson } from './function';
+import { createOrg } from './function';
 
 const config = [
   { key: 'avatarUrl', value: '' },
@@ -11,6 +11,6 @@ const config = [
   { key: 'about', value: '', multiline: true },
 ];
 
-const PersonForm = () => <FormBase config={config} callback={createPerson} />;
+const PersonForm = () => <FormBase config={config} callback={createOrg} />;
 
 export default PersonForm;

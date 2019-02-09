@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  * { box-sizing : border-box; }
   html {
     color: ${props => props.theme.primaryColor};
     background: ${props => props.theme.backgroundColor};

@@ -1,11 +1,6 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
-} from '@material-ui/core';
+import { FormControl, TextField } from '@material-ui/core';
 
 const FormField = ({
   keyword,
@@ -13,24 +8,30 @@ const FormField = ({
   touched,
   errors,
   multiline,
+  isTime,
   ...others
 }) => (
-  <FormControl
-    style={{ marginBottom: '1rem' }}
-    error={!!(touched[keyword] && errors[keyword])}
-  >
-    <InputLabel htmlFor={keyword}>{placeholder || keyword}</InputLabel>
-    <Input
-      autoComplete='off'
-      id={keyword}
-      {...others}
-      multiline
-      rows={multiline ? 3 : 1}
-    />
-    {touched[keyword] && errors[keyword] && (
-      <FormHelperText id='component-error-text'>
-        {errors[keyword]}
-      </FormHelperText>
+  <FormControl error={!!(touched[keyword] && errors[keyword])}>
+    {isTime ? (
+      <TextField
+        margin='dense'
+        label={placeholder || keyword}
+        type='datetime-local'
+        // defaultValue='2019-01-01T18:30'
+        InputLabelProps={{
+          shrink: true,
+        }}
+        {...others}
+      />
+    ) : (
+      <TextField
+        label={placeholder || keyword}
+        margin='dense'
+        multiline
+        rows={multiline ? 3 : 1}
+        {...others}
+        helperText={errors[keyword]}
+      />
     )}
   </FormControl>
 );
@@ -38,6 +39,7 @@ const FormField = ({
 FormField.defaultProps = {
   placeholder: '',
   multiline: false,
+  isTime: false,
 };
 
 FormField.propTypes = {
@@ -46,6 +48,7 @@ FormField.propTypes = {
   touched: PropTypes.objectOf(PropTypes.bool).isRequired,
   errors: PropTypes.objectOf(PropTypes.string).isRequired,
   multiline: PropTypes.bool,
+  isTime: PropTypes.bool,
 };
 
 export default FormField;

@@ -7,15 +7,15 @@ import TabsBase from '@material-ui/core/Tabs';
 import TabBase from '@material-ui/core/Tab';
 
 const Page = styled(PageBase)`
-  margin: 0 3rem;
+  margin: 3rem;
   padding: 1rem;
   width: auto;
-  justify-content: flex-start;
 `;
 const GridContainer = styled(GridContainerBase)`
   /* >>> */
   display: flex;
   justify-content: flex-start;
+  box-shadow: 3px 0 10px #0006;
 `;
 
 const Grid = styled(GridBase)`

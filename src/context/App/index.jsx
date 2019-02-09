@@ -11,7 +11,7 @@ import { FirebaseApp, FirebaseContext } from 'utils/firebase';
 const App = () => (
   <StyledTheme>
     <CssBaseline />
-    <FirebaseContext.Provider value={new FirebaseApp()}>
+    <FirebaseContext.Provider value={FirebaseApp}>
       <Router>
         <Switch>
           {AUTH_ROUTE.map(prop => (

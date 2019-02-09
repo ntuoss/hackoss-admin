@@ -3,10 +3,7 @@ import { page } from 'styles/variables';
 
 const Page = styled.section`
   ${page}
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
 `;
 
 export default Page;

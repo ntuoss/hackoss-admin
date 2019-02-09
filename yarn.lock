@@ -4450,12 +4450,13 @@ h2x-types@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/h2x-types/-/h2x-types-1.1.0.tgz#ec0d5e3674e2207269f32976ac9c82aaff4818e6"
 
-hackoss@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/hackoss/-/hackoss-0.4.2.tgz#12587fe96c9da315b8cc9180e46148fe70ba4f1b"
+hackoss@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/hackoss/-/hackoss-0.4.3.tgz#29c26080dc7d5c162af97969f0f037e10f7b61b3"
   dependencies:
     firebase "^5.8.0"
     lodash "^4.17.11"
+    validate.js "^0.12.0"
 
 handle-thing@^2.0.0:
   version "2.0.0"
@@ -10084,6 +10085,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validate.js@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.12.0.tgz#17f989e37c192ea2f826bbf19bf4e97e6e4be68f"
 
 value-equal@^0.4.0:
   version "0.4.0"

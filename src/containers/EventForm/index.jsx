@@ -2,6 +2,11 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 import PersonForm from './components/PersonForm';
+import ArtworkForm from './components/ArtworkForm';
+import EventForm from './components/EventForm';
+import OrgForm from './components/OrgForm';
+import LocationForm from './components/LocationForm';
+
 import { Page, Grid, GridContainer, Tabs, Tab } from './style';
 
 function SimpleTabs() {
@@ -14,27 +19,28 @@ function SimpleTabs() {
   return (
     <Page>
       <GridContainer spacing={24}>
-        <Grid xs={12} sm={8}>
-          <AppBar position='static'>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              indicatorColor='primary'
-              textColor='primary'
-            >
-              <Tab label='Event Form' />
-              {/* <Tab label='Speaker Form' />
-              <Tab label='Org Form' />
-              <Tab label='Artwork Form' /> */}
-            </Tabs>
-          </AppBar>
-          {value === 0 && <PersonForm />}
-          {/* {value === 1 && <PersonForm />}
-          {value === 2 && <PersonForm />}
-          {value === 3 && <PersonForm />} */}
-        </Grid>
-        <Grid xs={12} sm={4}>
-          Sub-form panel
+        <AppBar position='static'>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor='primary'
+            textColor='primary'
+            variant='scrollable'
+            scrollButtons='auto'
+          >
+            <Tab label='Event Form' />
+            <Tab label='Speaker Form' />
+            <Tab label='Org Form' />
+            <Tab label='Artwork Form' />
+            <Tab label='Location Form' />
+          </Tabs>
+        </AppBar>
+        <Grid sm={12}>
+          {value === 0 && <EventForm />}
+          {value === 1 && <PersonForm />}
+          {value === 2 && <OrgForm />}
+          {value === 3 && <ArtworkForm />}
+          {value === 4 && <LocationForm />}
         </Grid>
       </GridContainer>
     </Page>
