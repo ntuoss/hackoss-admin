@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, FieldArray } from 'formik';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 import { GridContainer, Grid, FormField } from '../style';
 
@@ -55,6 +56,9 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                       />
                     )}
                   />
+                </Grid>
+                <Grid sm={12}>
+                  <Divider />
                 </Grid>
               </GridContainer>
             ))}

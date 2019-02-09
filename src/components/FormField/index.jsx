@@ -17,7 +17,6 @@ const FormField = ({
         margin='dense'
         label={placeholder || keyword}
         type='datetime-local'
-        // defaultValue='2019-01-01T18:30'
         InputLabelProps={{
           shrink: true,
         }}

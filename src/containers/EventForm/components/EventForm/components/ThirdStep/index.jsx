@@ -1,6 +1,9 @@
 import React from 'react';
 import { Field, FieldArray } from 'formik';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
 import { Grid, GridContainer, FormField } from '../style';
 
@@ -37,10 +40,22 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                     type='text'
                     name={`prerequisites[${i}].proficiency`}
                     render={({ field }) => (
-                      <FormField
-                        keyword='proficiency'
-                        {...{ errors, touched, ...field }}
-                      />
+                      <TextField
+                        select
+                        label='proficiency'
+                        helperText='Select the proficiency'
+                        margin='dense'
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        {...field}
+                      >
+                        {['basic', 'intermediate', 'advanced'].map(option => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))}
+                      </TextField>
                     )}
                   />
                 </Grid>
@@ -55,6 +70,9 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                       />
                     )}
                   />
+                </Grid>
+                <Grid sm={12}>
+                  <Divider />
                 </Grid>
               </GridContainer>
             ))}

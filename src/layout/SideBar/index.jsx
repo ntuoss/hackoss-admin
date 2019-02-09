@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '@material-ui/core';
+import Icon from '@material-ui/core/Icon';
 
 import Logo from 'components/Logo';
 import {
   Drawer,
+  Divider,
   SideBarHeader,
   List,
   NavLink,
@@ -24,6 +25,7 @@ const Sidebar = props => {
         <Logo size='3.2rem' />
         <span>{title}</span>
       </SideBarHeader>
+      <Divider />
       <List>
         {routes.map(item => {
           if (item.redirect || item.headerRoute || !item.path) return null;
