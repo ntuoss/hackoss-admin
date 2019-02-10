@@ -14,9 +14,7 @@ export const createLocation = setStatus => async input => {
   const exist = await locRepo.getLocations();
   if (exist.find(loc => loc.name === input.name)) {
     setStatus('location existed');
-    return input;
+    return null;
   }
-  const status = await locRepo.createLocation(input);
-  setStatus(status || 'error');
-  return input;
+  return locRepo.createLocation(input);
 };

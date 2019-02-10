@@ -11,14 +11,6 @@ export async function getPeople() {
   return people.map(person => person.name);
 }
 
-export function getArtworks() {
-  const pplRepo = new PeopleRepository(FirebaseApp);
-  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
-  awRepo.getArtworks().then(artwork => {
-    console.log(artwork);
-  });
-}
-
 export const createArtwork = setStatus => async artwork => {
   const pplRepo = new PeopleRepository(FirebaseApp);
   const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
@@ -27,7 +19,5 @@ export const createArtwork = setStatus => async artwork => {
   const matchedPerson = people.find(person => person.name === artistId);
   artistId = matchedPerson.id;
   const result = { ...artwork, artistId, eventbriteId: '' };
-  const status = await awRepo.createArtwork(result);
-  setStatus(status || 'success');
-  return result;
+  return awRepo.createArtwork(result);
 };

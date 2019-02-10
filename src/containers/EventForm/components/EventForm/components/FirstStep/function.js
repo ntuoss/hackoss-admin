@@ -1,7 +1,7 @@
 import {
   ArtworksRepository,
-  LocationsRepository,
   PeopleRepository,
+  LocationsRepository,
 } from 'hackoss';
 import { FirebaseApp } from 'utils/firebase';
 
@@ -12,16 +12,16 @@ async function getArtworksBase() {
   return artwork;
 }
 async function getLocationsBase() {
-  const awRepo = new LocationsRepository(FirebaseApp);
-  const artwork = await awRepo.getLocations();
-  return artwork;
+  const locRepo = new LocationsRepository(FirebaseApp);
+  const loc = await locRepo.getLocations();
+  return loc;
 }
 export async function getArtworks() {
   const data = await getArtworksBase();
-  return data.map(item => item.name);
+  return data.length > 0 ? data.map(item => item.title) : ['Nothing created'];
 }
 
 export async function getLocations() {
   const data = await getLocationsBase();
-  return data.map(item => item.name);
+  return data.length > 0 ? data.map(item => item.name) : ['Nothing created'];
 }

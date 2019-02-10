@@ -6,7 +6,7 @@ import { Formik, Field } from 'formik';
 import FormField from 'components/FormField';
 import { Form } from './style';
 
-const FormBase = ({ config, callback, children }) => (
+const FormBase = ({ setStatus, config, callback, children }) => (
   <Formik
     initialValues={config.reduce(
       (agg, value) => ({
@@ -16,10 +16,19 @@ const FormBase = ({ config, callback, children }) => (
       {},
     )}
     onSubmit={(values, { setSubmitting }) => {
-      callback(values).then(() => setSubmitting(false));
+      callback(values)
+        .then(() => {
+          setStatus('success');
+        })
+        .catch(e => {
+          setStatus(e);
+        })
+        .finally(() => {
+          setSubmitting(false);
+        });
     }}
   >
-    {({ isSubmitting, errors, touched }) => (
+    {({ isSubmitting }) => (
       <Form>
         {config.map(
           item =>
@@ -45,6 +54,7 @@ FormBase.defaultProps = {
   children: null,
 };
 FormBase.propTypes = {
+  setStatus: PropTypes.func.isRequired,
   config: PropTypes.arrayOf(PropTypes.object).isRequired,
   callback: PropTypes.func.isRequired,
   children: PropTypes.element,

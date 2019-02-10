@@ -13,7 +13,13 @@ const config = [
 ];
 
 const OrgForm = ({ setStatus }) => {
-  return <FormBase config={config} callback={createOrg(setStatus)} />;
+  return (
+    <FormBase
+      setStatus={setStatus}
+      config={config}
+      callback={createOrg(setStatus)}
+    />
+  );
 };
 
 OrgForm.propTypes = {

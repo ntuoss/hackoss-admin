@@ -13,9 +13,7 @@ export const createPerson = setStatus => async input => {
   const existingPeople = await pplRepo.getPeople();
   if (existingPeople.find(person => person.name === input.name)) {
     setStatus('This person exsited in the database');
-    return input;
+    return null;
   }
-  const status = await pplRepo.createPerson(input);
-  setStatus(status || 'success');
-  return input;
+  return pplRepo.createPerson(input);
 };

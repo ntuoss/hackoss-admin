@@ -15,13 +15,22 @@ const config = [
 ];
 
 const ArtworkForm = ({ setStatus }) => {
-  const [peopleList, setPeopleList] = useState(['...']);
+  const [people, setPeople] = useState(['...']);
+  let isMounted;
   useEffect(() => {
-    getPeople().then(setPeopleList);
+    isMounted = true;
+    getPeople().then(val => isMounted && setPeople(val));
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
-    <FormBase config={config} callback={createArtwork(setStatus)}>
+    <FormBase
+      setStatus={setStatus}
+      config={config}
+      callback={createArtwork(setStatus)}
+    >
       <Field
         type='text'
         name='artistId'
@@ -34,7 +43,7 @@ const ArtworkForm = ({ setStatus }) => {
             }}
             {...props}
           >
-            {peopleList.map(option => (
+            {people.map(option => (
               <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>

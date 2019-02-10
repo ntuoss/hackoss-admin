@@ -48,6 +48,7 @@ function SimpleTabs() {
         </Grid>
       </GridContainer>
       {status ? <SnackBar status={status} /> : null}
+      {/* This step is error prone. TODO: better design for SnackBar */}
     </Page>
   );
 }

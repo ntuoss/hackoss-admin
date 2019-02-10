@@ -4416,9 +4416,9 @@ h2x-types@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/h2x-types/-/h2x-types-1.1.0.tgz#ec0d5e3674e2207269f32976ac9c82aaff4818e6"
 
-hackoss@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/hackoss/-/hackoss-0.4.3.tgz#29c26080dc7d5c162af97969f0f037e10f7b61b3"
+hackoss@ntuoss/hackoss#dev:
+  version "0.4.4"
+  resolved "https://codeload.github.com/ntuoss/hackoss/tar.gz/bba01cc36c29bdd8b1270400b4cef195b4c6cce7"
   dependencies:
     firebase "^5.8.0"
     lodash "^4.17.11"

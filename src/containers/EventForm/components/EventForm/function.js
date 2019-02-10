@@ -2,28 +2,41 @@ import {
   PeopleRepository,
   ArtworksRepository,
   OrganisationsRepository,
+  LocationsRepository,
+  EventsRepository,
 } from 'hackoss';
 import { FirebaseApp } from 'utils/firebase';
 
-async function getPeopleBase() {
+export default async function createEvent(data) {
   const pplRepo = new PeopleRepository(FirebaseApp);
-  const people = await pplRepo.getPeople();
-  return people;
-}
-
-export async function getOrgs() {
+  const locRepo = new LocationsRepository(FirebaseApp);
   const orgRepo = new OrganisationsRepository(FirebaseApp);
-  const orgs = orgRepo.getOrganisations();
-  return orgs;
-}
-export async function getPeople() {
-  const people = await getPeopleBase();
-  return people.map(person => person.name);
-}
-
-export async function getArtworks() {
-  const pplRepo = new PeopleRepository(FirebaseApp);
   const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
+  const eventRepo = new EventsRepository(
+    FirebaseApp,
+    pplRepo,
+    locRepo,
+    orgRepo,
+    awRepo,
+  );
+  /* eslint-disable */
+  let { banner, venue, speakers, startTime, endTime, ...others } = data;
+  /* eslint-enable */
   const aw = await awRepo.getArtworks();
-  return aw;
+  const loc = await locRepo.getLocations();
+  const ppl = await pplRepo.getPeople();
+  const org = await orgRepo.getOrganisations();
+  startTime = new Date(startTime);
+  endTime = new Date(endTime);
+  const bannerId = aw.find(item => item.title === banner).id;
+  const venueId = loc.find(item => item.name === venue).id;
+  speakers = speakers.map(item => {
+    const { person, organisation } = item;
+    const personId = ppl.find(v => v.name === person).id;
+    const organisationId = org.find(v => v.name === organisation).id;
+    return { ...item, personId, organisationId };
+  });
+
+  const result = { ...data, bannerId, venueId, speakers, startTime, endTime };
+  return eventRepo.createEvent(result);
 }

@@ -19,14 +19,18 @@ import FormField from 'components/FormField';
 
 /* eslint-disable */
 const Referencing = ({ values, activeStep, errors, touched }) => {
-  const [person, setPerson] = useState(['...']);
-  const [org, setOrg] = useState(['...']);
+  const [person, setPerson] = useState(['']);
+  const [org, setOrg] = useState(['']);
 
+  let isMounted;
   useEffect(() => {
-    getPeople().then(setPerson);
-    getOrgs().then(setOrg);
+    isMounted = true;
+    getPeople().then(val => isMounted && setPerson(val));
+    getOrgs().then(val => isMounted && setOrg(val));
+    return () => {
+      isMounted = false;
+    };
   }, []);
-
   return (
     <GridContainer direction='column'>
       <FieldArray

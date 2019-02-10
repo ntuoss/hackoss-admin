@@ -14,7 +14,13 @@ const config = [
 ];
 
 const LocationForm = ({ setStatus }) => {
-  return <FormBase config={config} callback={createLocation(setStatus)} />;
+  return (
+    <FormBase
+      setStatus={setStatus}
+      config={config}
+      callback={createLocation(setStatus)}
+    />
+  );
 };
 
 LocationForm.propTypes = {

@@ -13,9 +13,14 @@ import { mainConfig, booleanConfig, timeConfig } from '../../config';
 const FirstStep = ({ activeStep, errors, touched }) => {
   const [venues, setVenues] = useState(['']);
   const [banners, setBanner] = useState(['']);
+  let isMounted;
   useEffect(() => {
-    getArtworks().then(setBanner);
-    getLocations().then(setVenues);
+    isMounted = true;
+    getArtworks().then(val => isMounted && setBanner(val));
+    getLocations().then(val => isMounted && setVenues(val));
+    return () => {
+      isMounted = false;
+    };
   }, []);
   return (
     <GridContainer>

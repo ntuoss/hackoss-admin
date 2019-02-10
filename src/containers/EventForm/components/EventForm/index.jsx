@@ -10,6 +10,7 @@ import FirstStep from './components/FirstStep';
 import SecondStep from './components/SecondStep';
 import ThirdStep from './components/ThirdStep';
 import Referencing from './components/Referencing';
+import createEvent from './function';
 import {
   Wrapper,
   Stepper,
@@ -82,9 +83,14 @@ function HorizontalLinearStepper({ setStatus }) {
       <Formik
         initialValues={initConfig}
         onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false);
-          alert(JSON.stringify(values, null, 2));
-          setStatus('error');
+          createEvent(values)
+            .then(() => {
+              setStatus('success');
+            })
+            .catch(e => setStatus(e))
+            .finally(() => {
+              setSubmitting(false);
+            });
         }}
       >
         {({ values, isSubmitting, errors, touched }) => (
@@ -98,13 +104,17 @@ function HorizontalLinearStepper({ setStatus }) {
             </Stepper>
             <GridContainer direction='column' alignItems='stretch'>
               {activeStep === steps.length ? (
-                <Grid>
-                  <Typography>All steps completed</Typography>
-                  <Button onClick={handleReset}>Reset</Button>
-                  <Button type='submit' disabled={isSubmitting}>
-                    Submit
-                  </Button>
-                </Grid>
+                <GridContainer direction='column' alignItems='center'>
+                  <Typography component='h3' variant='h3' gutterBottom>
+                    All steps completed
+                  </Typography>
+                  <div>
+                    <Button onClick={handleReset}>Reset</Button>
+                    <Button type='submit' disabled={isSubmitting}>
+                      Submit
+                    </Button>
+                  </div>
+                </GridContainer>
               ) : (
                 <>
                   <GridContainer direction='column' alignItems='center'>

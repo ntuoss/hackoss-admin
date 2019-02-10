@@ -13,9 +13,7 @@ export const createOrg = setStatus => async input => {
   const exist = await orgRepo.getOrganisations();
   if (exist.find(org => org.name === input.name)) {
     setStatus('This org exsited in the database');
-    return input;
+    return null;
   }
-  const status = await orgRepo.createOrganisation(input);
-  setStatus(status || 'success');
-  return input;
+  return orgRepo.createOrganisation(input);
 };

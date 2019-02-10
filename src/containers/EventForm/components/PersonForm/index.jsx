@@ -12,8 +12,15 @@ const config = [
 ];
 
 const PersonForm = ({ setStatus }) => {
-  return <FormBase config={config} callback={createPerson(setStatus)} />;
+  return (
+    <FormBase
+      setStatus={setStatus}
+      config={config}
+      callback={createPerson(setStatus)}
+    />
+  );
 };
+
 PersonForm.propTypes = {
   setStatus: PropTypes.func.isRequired,
 };
