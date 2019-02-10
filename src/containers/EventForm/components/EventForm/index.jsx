@@ -15,7 +15,6 @@ import {
   Wrapper,
   Stepper,
   GridContainer,
-  Grid,
   ButtonWrapper,
   Button,
 } from './style';

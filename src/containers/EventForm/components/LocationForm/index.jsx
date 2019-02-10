@@ -2,7 +2,7 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 
 import FormBase from 'containers/EventForm/utils/FormBase';
-import { createLocation } from './function';
+import createLocation from './function';
 
 const config = [
   { key: 'name', value: '' },

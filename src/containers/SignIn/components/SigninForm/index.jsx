@@ -69,8 +69,8 @@ class Signin extends PureComponent {
             <Field
               type='email'
               name='email'
-              render={({ field }) => (
-                <FormField keyword='email' {...{ errors, touched, ...field }} />
+              render={(props) => (
+                <FormField keyword='email' {...props} />
               )}
             />
             <Field

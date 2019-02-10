@@ -11,13 +11,18 @@ export async function getPeople() {
   return people.map(person => person.name);
 }
 
-export const createArtwork = setStatus => async artwork => {
+export const createArtwork = setStatus => async input => {
   const pplRepo = new PeopleRepository(FirebaseApp);
   const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
-  let { artistId } = artwork;
+  const exist = awRepo.getArtworks();
+  if (exist.find(loc => loc.title === input.title)) {
+    setStatus('location existed');
+    return null;
+  }
+  let { artistId } = input;
   const people = await getPeopleBase();
   const matchedPerson = people.find(person => person.name === artistId);
   artistId = matchedPerson.id;
-  const result = { ...artwork, artistId, eventbriteId: '' };
+  const result = { ...input, artistId, eventbriteId: '' };
   return awRepo.createArtwork(result);
 };
