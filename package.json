@@ -12,7 +12,7 @@
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "cross-env NODE_ENV=test react-scripts test",
     "lint": "eslint --ignore-path .gitignore --ext=js,jsx --fix ./src ",
-    "lint:css": "stylelint './app/**/*.jsx' './app/**/*.js'"
+    "lint:css": "stylelint './src/**/*.jsx' './src/**/*.js'"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -95,7 +95,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": [
+    "*.{js,jsx}": [
       "yarn run lint",
       "yarn run lint:css",
       "git add --force"
