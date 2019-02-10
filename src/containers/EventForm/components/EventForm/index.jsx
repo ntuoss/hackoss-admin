@@ -31,11 +31,11 @@ import { initConfig } from './config';
 // //   remarks: string;
 // //   startTime: firebase.firestore.Timestamp;
 // //   endTime: firebase.firestore.Timestamp;
-// //   speakers: FirebaseEventSpeaker[]; *
+// //   speakers: FirebaseEventSpeaker[];
 // //   prerequisites: Prerequisite[];
 // //   dependencies: Dependency[];
-// //   banner: firebase.firestore.DocumentReference; *
-// //   venue: firebase.firestore.DocumentReference; *
+// //   banner: firebase.firestore.DocumentReference;
+// //   venue: firebase.firestore.DocumentReference;
 
 // //   eventbrite: Publication;
 // //   facebook: Publication;

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Field } from 'formik';
 
+import FormField from 'components/FormField';
 import FormBase from 'containers/EventForm/utils/FormBase';
 import { createArtwork, getPeople } from './function';
 
@@ -24,23 +25,21 @@ const ArtworkForm = ({ setStatus }) => {
       <Field
         type='text'
         name='artistId'
-        render={({ field }) => (
-          <TextField
+        render={props => (
+          <FormField
             select
             label='Artist'
-            helperText='Choose the artist for the artwork'
-            margin='dense'
             InputLabelProps={{
               shrink: true,
             }}
-            {...field}
+            {...props}
           >
             {peopleList.map(option => (
               <MenuItem key={option} value={option}>
                 {option}
               </MenuItem>
             ))}
-          </TextField>
+          </FormField>
         )}
       />
     </FormBase>

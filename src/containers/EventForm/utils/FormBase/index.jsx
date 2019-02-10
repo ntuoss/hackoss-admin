@@ -28,14 +28,7 @@ const FormBase = ({ config, callback, children }) => (
                 key={item.key}
                 type={item.type || 'text'}
                 name={item.key}
-                render={({ field }) => (
-                  <FormField
-                    keyword={item.key}
-                    multiline={item.multiline}
-                    isTime={item.isTime}
-                    {...{ errors, touched, ...field }}
-                  />
-                )}
+                render={FormField}
               />
             ),
         )}

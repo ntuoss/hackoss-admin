@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, FieldArray } from 'formik';
 import Divider from '@material-ui/core/Divider';
-import FormArrayField from 'components/FormArrayField';
+import FormField from 'components/FormField';
 import IconButton from '@material-ui/core/IconButton';
 import { GridContainer, Grid, IconGrid, CancelIcon, AddIcon } from '../style';
 
@@ -20,13 +20,13 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
         <>
           {values.dependencies &&
             values.dependencies.map((v, i) => (
-              <GridContainer key={i} direction='row' spacing={16}>
+              <GridContainer alignItems='flex-end' key={i} spacing={16}>
                 <Grid sm={2}>
                   <Field
                     type='text'
                     name={`dependencies[${i}].label`}
                     render={props => (
-                      <FormArrayField variant='outlined' {...props} />
+                      <FormField variant='outlined' {...props} />
                     )}
                   />
                 </Grid>
@@ -34,14 +34,14 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                   <Field
                     type='text'
                     name={`dependencies[${i}].specification`}
-                    render={FormArrayField}
+                    render={FormField}
                   />
                 </Grid>
                 <Grid sm={6}>
                   <Field
                     type='text'
                     name={`dependencies[${i}].referenceUrl`}
-                    render={FormArrayField}
+                    render={FormField}
                   />
                 </Grid>
                 <IconGrid sm={1}>

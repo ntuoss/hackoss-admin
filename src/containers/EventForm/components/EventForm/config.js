@@ -51,11 +51,13 @@ const basicInitConfig = configReducer([
 ]);
 
 export const initConfig = {
-  ...basicInitConfig,
+  venue: '',
+  banner: '',
   dependencies: [configReducer(dependencyConfig)],
   prerequisites: [configReducer(prerequisiteConfig)],
   speakers: [configReducer(speakerConfig)],
   friends: [configReducer(friendsConfig)],
+  ...basicInitConfig,
 };
 
 console.log({ dependencies: [configReducer(friendsConfig)] });

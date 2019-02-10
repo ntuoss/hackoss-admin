@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 export default ({ field, form, children, ...props }) => (
   <TextField
     type='text'
+    margin='normal'
     placeholder={field.name.split('.')[1]}
     label={field.name.split('.')[1]}
     {...field}

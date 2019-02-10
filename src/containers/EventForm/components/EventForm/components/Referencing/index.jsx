@@ -13,16 +13,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 
-import {
-  Grid,
-  GridContainer,
-  FormField,
-  IconGrid,
-  CancelIcon,
-  AddIcon,
-} from '../style';
+import { Grid, GridContainer, IconGrid, CancelIcon, AddIcon } from '../style';
 import { getArtworks, getPeople, getOrgs } from './function';
-import FormArrayField from 'components/FormArrayField';
+import FormField from 'components/FormField';
 
 /* eslint-disable */
 const Referencing = ({ values, activeStep, errors, touched }) => {
@@ -42,15 +35,15 @@ const Referencing = ({ values, activeStep, errors, touched }) => {
           <>
             {values.speakers &&
               values.speakers.map((v, i) => (
-                <GridContainer key={i} spacing={16}>
+                <GridContainer key={i} alignItems='flex-end' spacing={16}>
                   <Grid sm={3}>
                     <Field
                       type='text'
                       name={`speakers[${i}].person`}
                       render={props => (
-                        <FormArrayField
+                        <FormField
                           select
-                          margin='dense'
+                          variant='outlined'
                           InputLabelProps={{
                             shrink: true,
                           }}
@@ -61,7 +54,7 @@ const Referencing = ({ values, activeStep, errors, touched }) => {
                               {option}
                             </MenuItem>
                           ))}
-                        </FormArrayField>
+                        </FormField>
                       )}
                     />
                   </Grid>
@@ -70,9 +63,9 @@ const Referencing = ({ values, activeStep, errors, touched }) => {
                       type='text'
                       name={`speakers[${i}].organisation`}
                       render={props => (
-                        <FormArrayField
+                        <FormField
                           select
-                          margin='dense'
+                          variant='outlined'
                           InputLabelProps={{
                             shrink: true,
                           }}
@@ -83,7 +76,7 @@ const Referencing = ({ values, activeStep, errors, touched }) => {
                               {option}
                             </MenuItem>
                           ))}
-                        </FormArrayField>
+                        </FormField>
                       )}
                     />
                   </Grid>
@@ -91,7 +84,7 @@ const Referencing = ({ values, activeStep, errors, touched }) => {
                     <Field
                       type='text'
                       name={`speakers[${i}].position`}
-                      render={FormArrayField}
+                      render={FormField}
                     />
                   </Grid>
                   <IconGrid sm={1}>

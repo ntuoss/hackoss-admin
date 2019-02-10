@@ -1,52 +1,21 @@
 import React from 'react';
-import * as PropTypes from 'prop-types';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
-const FormField = ({
-  keyword,
-  placeholder,
-  touched,
-  errors,
-  multiline,
-  isTime,
-  ...others
-}) =>
-  isTime ? (
-    <TextField
-      margin='dense'
-      label={placeholder || keyword}
-      type='datetime-local'
-      InputLabelProps={{
-        shrink: true,
-      }}
-      error={!!(touched[keyword] && errors[keyword])}
-      {...others}
-    />
-  ) : (
-    <TextField
-      label={placeholder || keyword}
-      margin='dense'
-      multiline
-      rows={multiline ? 3 : 1}
-      helperText={errors[keyword]}
-      error={!!(touched[keyword] && errors[keyword])}
-      {...others}
-    />
-  );
-
-FormField.defaultProps = {
-  placeholder: '',
-  multiline: false,
-  isTime: false,
-};
-
-FormField.propTypes = {
-  keyword: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  touched: PropTypes.objectOf(PropTypes.bool).isRequired,
-  errors: PropTypes.objectOf(PropTypes.string).isRequired,
-  multiline: PropTypes.bool,
-  isTime: PropTypes.bool,
-};
-
-export default FormField;
+/* eslint-disable */
+export default ({ field, form, children, ...props }) => (
+  <TextField
+    type='text'
+    margin='normal'
+    label={field.name.split('.')[1] || field.name}
+    {...field}
+    {...props}
+    error={form.touched[field.name] && form.errors[field.name]}
+    helperText={
+      form.touched[field.name] && form.errors[field.name]
+        ? form.errors[field.name]
+        : ''
+    }
+  >
+    {children}
+  </TextField>
+);

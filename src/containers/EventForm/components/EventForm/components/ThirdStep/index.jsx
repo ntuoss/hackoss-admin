@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import Divider from '@material-ui/core/Divider';
 
-import FormArrayField from 'components/FormArrayField';
+import FormField from 'components/FormField';
 import { GridContainer, Grid, IconGrid, CancelIcon, AddIcon } from '../style';
 
 // export declare class Prerequisite {
@@ -29,7 +29,7 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                     type='text'
                     name={`prerequisites[${i}].label`}
                     render={props => (
-                      <FormArrayField variant='outlined' {...props} />
+                      <FormField variant='outlined' {...props} />
                     )}
                   />
                 </Grid>
@@ -38,8 +38,9 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                     type='text'
                     name={`prerequisites[${i}].proficiency`}
                     render={props => (
-                      <FormArrayField
+                      <FormField
                         select
+                        variant='outlined'
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -50,7 +51,7 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                             {option}
                           </MenuItem>
                         ))}
-                      </FormArrayField>
+                      </FormField>
                     )}
                   />
                 </Grid>
@@ -58,7 +59,7 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                   <Field
                     type='text'
                     name={`prerequisites[${i}].referenceUrl`}
-                    render={FormArrayField}
+                    render={FormField}
                   />
                 </Grid>
                 <IconGrid sm={1}>
