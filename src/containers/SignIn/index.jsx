@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Page from 'components/Page';
 
 import { DASHBOARD } from 'routes';
 import { withFirebase } from 'utils/firebase';
 import SigninForm from './components/SigninForm';
+import { CenterPage } from './style';
 
 class App extends Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class App extends Component {
     return this.state.authUser ? (
       <Redirect to={DASHBOARD} />
     ) : (
-      <Page>
+      <CenterPage>
         <SigninForm />
-      </Page>
+      </CenterPage>
     );
   }
 }

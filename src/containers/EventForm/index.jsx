@@ -1,13 +1,12 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-
+import Divider from '@material-ui/core/Divider';
 import PersonForm from './components/PersonForm';
 import ArtworkForm from './components/ArtworkForm';
 import EventForm from './components/EventForm';
 import OrgForm from './components/OrgForm';
 import LocationForm from './components/LocationForm';
 
-import { Page, Grid, GridContainer, Tabs, Tab } from './style';
+import { HeaderWrapper, Page, Grid, GridContainer, Tabs, Tab } from './style';
 
 function SimpleTabs() {
   const [value, setValue] = React.useState(0);
@@ -19,7 +18,7 @@ function SimpleTabs() {
   return (
     <Page>
       <GridContainer spacing={24}>
-        <AppBar position='static'>
+        <HeaderWrapper>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -34,7 +33,8 @@ function SimpleTabs() {
             <Tab label='Artwork Form' />
             <Tab label='Location Form' />
           </Tabs>
-        </AppBar>
+        </HeaderWrapper>
+        <Divider />
         <Grid sm={12}>
           {value === 0 && <EventForm />}
           {value === 1 && <PersonForm />}
