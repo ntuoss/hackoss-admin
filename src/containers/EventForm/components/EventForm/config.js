@@ -8,10 +8,10 @@ export const mainConfig = [
   { key: 'remarks' },
 ];
 export const booleanConfig = [
-  { key: 'isPublic' },
-  { key: 'isExternal' },
-  { key: 'hasFood' },
-  { key: 'hasDrinks' },
+  { key: 'isPublic', value: false },
+  { key: 'isExternal', value: false },
+  { key: 'hasFood', value: false },
+  { key: 'hasDrinks', value: false },
 ];
 export const timeConfig = [
   { key: 'startTime', isTime: true, value: '2019-01-01T18:30' },
@@ -28,10 +28,17 @@ export const dependencyConfig = [
   { key: 'specification' },
   { key: 'referenceUrl' },
 ];
+export const speakerConfig = [
+  { key: 'person' },
+  { key: 'organisation' },
+  { key: 'position' },
+];
+export const friendsConfig = [{ key: 'name' }, { key: 'age' }];
+
 const configReducer = config =>
   config.reduce(
     (agg, value) => ({
-      [value.key]: value.value,
+      [value.key]: value.value || '',
       ...agg,
     }),
     {},
@@ -47,4 +54,8 @@ export const initConfig = {
   ...basicInitConfig,
   dependencies: [configReducer(dependencyConfig)],
   prerequisites: [configReducer(prerequisiteConfig)],
+  speakers: [configReducer(speakerConfig)],
+  friends: [configReducer(friendsConfig)],
 };
+
+console.log({ dependencies: [configReducer(friendsConfig)] });

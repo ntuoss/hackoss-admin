@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import GridBase from 'components/GridComponent/Grid';
 import GridContainerBase from 'components/GridComponent/GridContainer';
-import FormFieldBase from 'components/FormField';
+import CancelIconBase from '@material-ui/icons/Cancel';
+import AddIconBase from '@material-ui/icons/Add';
 
 export const FieldWrapper = styled(GridBase)`
   /* >>> */
@@ -24,6 +25,16 @@ export const GridContainer = styled(GridContainerBase)`
   width: 80%;
 `;
 
-export const FormField = styled(FormFieldBase)`
+export const IconGrid = styled(GridBase)`
+  /* >>> */
+  justify-content: center;
+  width: auto;
+`;
+
+export const CancelIcon = styled(CancelIconBase)`
+  /* >>> */
+`;
+
+export const AddIcon = styled(AddIconBase)`
   /* >>> */
 `;

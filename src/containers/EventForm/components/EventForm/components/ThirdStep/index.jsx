@@ -1,11 +1,12 @@
 import React from 'react';
 import { Field, FieldArray } from 'formik';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+
 import Divider from '@material-ui/core/Divider';
 
-import { Grid, GridContainer, FormField } from '../style';
+import FormArrayField from 'components/FormArrayField';
+import { GridContainer, Grid, IconGrid, CancelIcon, AddIcon } from '../style';
 
 // export declare class Prerequisite {
 //   label: string;
@@ -16,22 +17,19 @@ import { Grid, GridContainer, FormField } from '../style';
 /* eslint-disable */
 const SecondStep = ({ values, activeStep, errors, touched }) => (
   <GridContainer direction='column'>
-    <FieldArray name='prerequisites'>
-      {({ push, remove }) => (
+    <FieldArray
+      name='prerequisites'
+      render={arrayHelpers => (
         <>
           {values.prerequisites &&
             values.prerequisites.map((v, i) => (
-              <GridContainer key={v} spacing={16}>
+              <GridContainer alignItems='flex-end' key={i} spacing={16}>
                 <Grid sm={2}>
                   <Field
                     type='text'
                     name={`prerequisites[${i}].label`}
-                    render={({ field }) => (
-                      <FormField
-                        keyword='label'
-                        variant='outlined'
-                        {...{ errors, touched, ...field }}
-                      />
+                    render={props => (
+                      <FormArrayField variant='outlined' {...props} />
                     )}
                   />
                 </Grid>
@@ -39,53 +37,56 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
                   <Field
                     type='text'
                     name={`prerequisites[${i}].proficiency`}
-                    render={({ field }) => (
-                      <TextField
+                    render={props => (
+                      <FormArrayField
                         select
-                        label='proficiency'
-                        helperText='Select the proficiency'
-                        margin='dense'
                         InputLabelProps={{
                           shrink: true,
                         }}
-                        {...field}
+                        {...props}
                       >
                         {['basic', 'intermediate', 'advanced'].map(option => (
                           <MenuItem key={option} value={option}>
                             {option}
                           </MenuItem>
                         ))}
-                      </TextField>
+                      </FormArrayField>
                     )}
                   />
                 </Grid>
-                <Grid sm={7}>
+                <Grid sm={6}>
                   <Field
                     type='text'
                     name={`prerequisites[${i}].referenceUrl`}
-                    render={({ field }) => (
-                      <FormField
-                        keyword='referenceUrl'
-                        {...{ errors, touched, ...field }}
-                      />
-                    )}
+                    render={FormArrayField}
                   />
                 </Grid>
+                <IconGrid sm={1}>
+                  <IconButton onClick={() => arrayHelpers.remove(i)}>
+                    <CancelIcon />
+                  </IconButton>
+                </IconGrid>
                 <Grid sm={12}>
                   <Divider />
                 </Grid>
               </GridContainer>
             ))}
-          <Button
-            onClick={() =>
-              push({ label: '', proficiency: 'basic', referenceUrl: '' })
-            }
-          >
-            Add
-          </Button>
+          <IconGrid container justify='flex-end'>
+            <IconButton
+              onClick={() =>
+                arrayHelpers.push({
+                  label: '',
+                  proficiency: 'basic',
+                  referenceUrl: '',
+                })
+              }
+            >
+              <AddIcon />
+            </IconButton>
+          </IconGrid>
         </>
       )}
-    </FieldArray>
+    />
   </GridContainer>
 );
 

@@ -29,6 +29,8 @@ const theme = {
   secondaryColor: '#fffe',
   highlightColor: 'DeepSkyBlue',
   hintColor: '#777',
+  success: '#4cbb17fa',
+  error: '#ee0809',
 };
 
 const StyledTheme = ({ children }) => (

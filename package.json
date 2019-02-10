@@ -18,7 +18,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "firebase": "^5.8.2",
-    "formik": "^1.4.3",
+    "formik": "^1.5.0",
     "hackoss": "^0.4.3",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
@@ -43,6 +43,9 @@
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.5.2"
+  },
+  "resolutions": {
+    "ajv": "6.8.1"
   },
   "eslintConfig": {
     "settings": {

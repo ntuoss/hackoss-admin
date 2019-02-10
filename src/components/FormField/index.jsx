@@ -1,6 +1,6 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import { FormControl, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 const FormField = ({
   keyword,
@@ -10,30 +10,29 @@ const FormField = ({
   multiline,
   isTime,
   ...others
-}) => (
-  <FormControl error={!!(touched[keyword] && errors[keyword])}>
-    {isTime ? (
-      <TextField
-        margin='dense'
-        label={placeholder || keyword}
-        type='datetime-local'
-        InputLabelProps={{
-          shrink: true,
-        }}
-        {...others}
-      />
-    ) : (
-      <TextField
-        label={placeholder || keyword}
-        margin='dense'
-        multiline
-        rows={multiline ? 3 : 1}
-        {...others}
-        helperText={errors[keyword]}
-      />
-    )}
-  </FormControl>
-);
+}) =>
+  isTime ? (
+    <TextField
+      margin='dense'
+      label={placeholder || keyword}
+      type='datetime-local'
+      InputLabelProps={{
+        shrink: true,
+      }}
+      error={!!(touched[keyword] && errors[keyword])}
+      {...others}
+    />
+  ) : (
+    <TextField
+      label={placeholder || keyword}
+      margin='dense'
+      multiline
+      rows={multiline ? 3 : 1}
+      helperText={errors[keyword]}
+      error={!!(touched[keyword] && errors[keyword])}
+      {...others}
+    />
+  );
 
 FormField.defaultProps = {
   placeholder: '',

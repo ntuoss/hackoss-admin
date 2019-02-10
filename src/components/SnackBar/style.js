@@ -13,7 +13,7 @@ export const SnackbarContent = styled(SnackbarContentBase)`
   /* >>> */
   && {
     background: ${props =>
-      props.status === 'success' ? '#4cbb17fa' : '#e30809fa'};
+      props.status === 'success' ? props.theme.success : props.theme.error};
     padding: 0 0.5rem;
   }
 `;

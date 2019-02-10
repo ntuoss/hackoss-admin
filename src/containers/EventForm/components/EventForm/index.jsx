@@ -55,7 +55,7 @@ function chooseForm(values, activeStep, errors, touched) {
     case 2:
       return <ThirdStep {...{ values, activeStep, errors, touched }} />;
     case 3:
-      return <Referencing {...{ activeStep, errors, touched }} />;
+      return <Referencing {...{ values, activeStep, errors, touched }} />;
     default:
       return 'Unknown step';
   }

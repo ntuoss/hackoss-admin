@@ -43,9 +43,14 @@ const FirstStep = ({ activeStep, errors, touched }) => (
             render={({ field }) => (
               <FormControlLabel
                 keyword={item.key}
-                control={<Checkbox color='primary' />}
+                control={
+                  <Checkbox
+                    color='primary'
+                    {...{ errors, touched, ...field }}
+                    value='false'
+                  />
+                }
                 label={item.key}
-                {...{ errors, touched, ...field }}
               />
             )}
           />
