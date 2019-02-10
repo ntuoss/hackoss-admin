@@ -27,5 +27,7 @@ export const createArtwork = setStatus => async artwork => {
   const matchedPerson = people.find(person => person.name === artistId);
   artistId = matchedPerson.id;
   const result = { ...artwork, artistId, eventbriteId: '' };
-  awRepo.createArtwork(result).then(() => setStatus('success'));
+  const status = await awRepo.createArtwork(result);
+  setStatus(status || 'success');
+  return result;
 };

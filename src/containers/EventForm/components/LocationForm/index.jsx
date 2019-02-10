@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import * as PropTypes from 'prop-types';
 
-import SnackBar from 'components/SnackBar';
 import FormBase from 'containers/EventForm/utils/FormBase';
 import { createLocation } from './function';
 
@@ -13,14 +13,11 @@ const config = [
   { key: 'eventbriteId', value: '' },
 ];
 
-const LocationForm = () => {
-  const [status, setStatus] = useState('');
-  return (
-    <>
-      <FormBase config={config} callback={createLocation(setStatus)} />
-      {status && <SnackBar status={status} />}
-    </>
-  );
+const LocationForm = ({ setStatus }) => {
+  return <FormBase config={config} callback={createLocation(setStatus)} />;
 };
 
+LocationForm.propTypes = {
+  setStatus: PropTypes.func.isRequired,
+};
 export default LocationForm;

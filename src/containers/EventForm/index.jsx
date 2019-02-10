@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Divider from '@material-ui/core/Divider';
+
+import SnackBar from 'components/SnackBar';
 import PersonForm from './components/PersonForm';
 import ArtworkForm from './components/ArtworkForm';
 import EventForm from './components/EventForm';
@@ -10,9 +12,11 @@ import { HeaderWrapper, Page, Grid, GridContainer, Tabs, Tab } from './style';
 
 function SimpleTabs() {
   const [value, setValue] = React.useState(0);
+  const [status, setStatus] = useState('');
 
   function handleChange(event, newValue) {
     setValue(newValue);
+    setStatus('');
   }
 
   return (
@@ -28,7 +32,7 @@ function SimpleTabs() {
             scrollButtons='auto'
           >
             <Tab label='Event Form' />
-            <Tab label='Speaker Form' />
+            <Tab label='Person Form' />
             <Tab label='Org Form' />
             <Tab label='Artwork Form' />
             <Tab label='Location Form' />
@@ -36,13 +40,14 @@ function SimpleTabs() {
         </HeaderWrapper>
         <Divider />
         <Grid sm={12}>
-          {value === 0 && <EventForm />}
-          {value === 1 && <PersonForm />}
-          {value === 2 && <OrgForm />}
-          {value === 3 && <ArtworkForm />}
-          {value === 4 && <LocationForm />}
+          {value === 0 && <EventForm setStatus={setStatus} />}
+          {value === 1 && <PersonForm setStatus={setStatus} />}
+          {value === 2 && <OrgForm setStatus={setStatus} />}
+          {value === 3 && <ArtworkForm setStatus={setStatus} />}
+          {value === 4 && <LocationForm setStatus={setStatus} />}
         </Grid>
       </GridContainer>
+      {status ? <SnackBar status={status} /> : null}
     </Page>
   );
 }

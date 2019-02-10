@@ -1,8 +1,9 @@
 import React from 'react';
-import { Formik } from 'formik';
+import * as PropTypes from 'prop-types';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
+import { Formik } from 'formik';
 
 import { Form } from 'containers/EventForm/utils/FormBase/style';
 import FirstStep from './components/FirstStep';
@@ -60,7 +61,7 @@ function chooseForm(values, activeStep, errors, touched) {
   }
 }
 
-function HorizontalLinearStepper() {
+function HorizontalLinearStepper({ setStatus }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = ['Basic setting', 'Dependencies', 'Prerequisite', 'References'];
 
@@ -83,6 +84,7 @@ function HorizontalLinearStepper() {
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
           alert(JSON.stringify(values, null, 2));
+          setStatus('error');
         }}
       >
         {({ values, isSubmitting, errors, touched }) => (
@@ -133,5 +135,7 @@ function HorizontalLinearStepper() {
     </Wrapper>
   );
 }
-
+HorizontalLinearStepper.propTypes = {
+  setStatus: PropTypes.func.isRequired,
+};
 export default HorizontalLinearStepper;

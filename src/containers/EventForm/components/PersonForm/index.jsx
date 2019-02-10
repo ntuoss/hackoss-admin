@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
-import SnackBar from 'components/SnackBar';
+import React from 'react';
+import * as PropTypes from 'prop-types';
 import FormBase from 'containers/EventForm/utils/FormBase';
 import { createPerson } from './function';
 
@@ -12,13 +11,10 @@ const config = [
   { key: 'about', value: '', multiline: true },
 ];
 
-const PersonForm = () => {
-  const [status, setStatus] = useState('');
-  return (
-    <>
-      <FormBase config={config} callback={createPerson(setStatus)} />
-      {status && <SnackBar status={status} />}
-    </>
-  );
+const PersonForm = ({ setStatus }) => {
+  return <FormBase config={config} callback={createPerson(setStatus)} />;
+};
+PersonForm.propTypes = {
+  setStatus: PropTypes.func.isRequired,
 };
 export default PersonForm;

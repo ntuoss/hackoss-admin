@@ -8,7 +8,14 @@ export function getPeople() {
   });
 }
 
-export const createPerson = setStatus => async people => {
+export const createPerson = setStatus => async input => {
   const pplRepo = new PeopleRepository(FirebaseApp);
-  pplRepo.createPerson(people).then(() => setStatus('success'));
+  const existingPeople = await pplRepo.getPeople();
+  if (existingPeople.find(person => person.name === input.name)) {
+    setStatus('This person exsited in the database');
+    return input;
+  }
+  const status = await pplRepo.createPerson(input);
+  setStatus(status || 'success');
+  return input;
 };

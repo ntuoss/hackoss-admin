@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import * as PropTypes from 'prop-types';
 
-import SnackBar from 'components/SnackBar';
 import FormBase from 'containers/EventForm/utils/FormBase';
 import { createOrg } from './function';
 
@@ -12,13 +12,11 @@ const config = [
   { key: 'about', value: '', multiline: true },
 ];
 
-const OrgForm = () => {
-  const [status, setStatus] = useState('');
-  return (
-    <>
-      <FormBase config={config} callback={createOrg(setStatus)} />
-      {status && <SnackBar status={status} />}
-    </>
-  );
+const OrgForm = ({ setStatus }) => {
+  return <FormBase config={config} callback={createOrg(setStatus)} />;
+};
+
+OrgForm.propTypes = {
+  setStatus: PropTypes.func.isRequired,
 };
 export default OrgForm;

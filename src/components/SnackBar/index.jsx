@@ -13,7 +13,6 @@ import {
 
 function SimpleSnackbar({ status, msg }) {
   const [open, setOpen] = React.useState(true);
-
   function handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;
@@ -28,7 +27,7 @@ function SimpleSnackbar({ status, msg }) {
         horizontal: 'left',
       }}
       open={open}
-      autoHideDuration={10000000}
+      autoHideDuration={2000}
       onClose={handleClose}
     >
       <SnackbarContent

@@ -8,7 +8,14 @@ export function getOrgs() {
   });
 }
 
-export const createOrg = setStatus => async org => {
+export const createOrg = setStatus => async input => {
   const orgRepo = new OrganisationsRepository(FirebaseApp);
-  orgRepo.createOrganisation(org).then(() => setStatus('success'));
+  const exist = await orgRepo.getOrganisations();
+  if (exist.find(org => org.name === input.name)) {
+    setStatus('This org exsited in the database');
+    return input;
+  }
+  const status = await orgRepo.createOrganisation(input);
+  setStatus(status || 'success');
+  return input;
 };

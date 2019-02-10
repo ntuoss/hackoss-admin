@@ -16,8 +16,7 @@ const FormBase = ({ config, callback, children }) => (
       {},
     )}
     onSubmit={(values, { setSubmitting }) => {
-      setSubmitting(false);
-      callback(values);
+      callback(values).then(() => setSubmitting(false));
     }}
   >
     {({ isSubmitting, errors, touched }) => (
