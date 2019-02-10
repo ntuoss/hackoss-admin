@@ -20,7 +20,7 @@ export const timeConfig = [
 
 export const prerequisiteConfig = [
   { key: 'label' },
-  { key: 'proficiency' },
+  { key: 'proficiency', value: 'basic' },
   { key: 'referenceUrl' },
 ];
 export const dependencyConfig = [
@@ -48,4 +48,3 @@ export const initConfig = {
   dependencies: [configReducer(dependencyConfig)],
   prerequisites: [configReducer(prerequisiteConfig)],
 };
-console.log(initConfig);

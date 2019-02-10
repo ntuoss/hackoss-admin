@@ -78,7 +78,7 @@ const SecondStep = ({ values, activeStep, errors, touched }) => (
             ))}
           <Button
             onClick={() =>
-              push({ label: '', proficiency: '', referenceUrl: '' })
+              push({ label: '', proficiency: 'basic', referenceUrl: '' })
             }
           >
             Add

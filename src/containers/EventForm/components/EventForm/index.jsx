@@ -31,8 +31,8 @@ import { initConfig } from './config';
 // //   startTime: firebase.firestore.Timestamp;
 // //   endTime: firebase.firestore.Timestamp;
 // //   speakers: FirebaseEventSpeaker[]; *
-// //   prerequisites: Prerequisite[]; *
-// //   dependencies: Dependency[]; *
+// //   prerequisites: Prerequisite[];
+// //   dependencies: Dependency[];
 // //   banner: firebase.firestore.DocumentReference; *
 // //   venue: firebase.firestore.DocumentReference; *
 
@@ -43,11 +43,6 @@ import { initConfig } from './config';
 // //   isExternal: boolean;
 // //   hasFood: boolean;
 // //   hasDrinks: boolean;
-// // }
-// // export declare class FirebaseEventSpeaker { *
-// //   person: firebase.firestore.DocumentReference;
-// //   organisation: firebase.firestore.DocumentReference;
-// //   position: string;
 // // }
 
 function chooseForm(values, activeStep, errors, touched) {

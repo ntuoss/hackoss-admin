@@ -22,21 +22,24 @@ const FormBase = ({ config, callback, children }) => (
   >
     {({ isSubmitting, errors, touched }) => (
       <Form>
-        {config.map(item => (
-          <Field
-            key={item.key}
-            type={item.type || 'text'}
-            name={item.key}
-            render={({ field }) => (
-              <FormField
-                keyword={item.key}
-                multiline={item.multiline}
-                isTime={item.isTime}
-                {...{ errors, touched, ...field }}
+        {config.map(
+          item =>
+            !item.except && (
+              <Field
+                key={item.key}
+                type={item.type || 'text'}
+                name={item.key}
+                render={({ field }) => (
+                  <FormField
+                    keyword={item.key}
+                    multiline={item.multiline}
+                    isTime={item.isTime}
+                    {...{ errors, touched, ...field }}
+                  />
+                )}
               />
-            )}
-          />
-        ))}
+            ),
+        )}
         {children}
         <Button type='submit' disabled={isSubmitting}>
           Submit

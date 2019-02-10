@@ -1,58 +1,102 @@
 import React from 'react';
-import { Field } from 'formik';
+import { Field, FieldArray } from 'formik';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
 
-import FormField from 'components/FormField';
-import { GridContainer, FieldWrapper } from '../style';
-import { dependencyConfig, prerequisiteConfig } from '../../config';
+import { Grid, GridContainer, FormField } from '../style';
 
-// export declare class Dependency {
-//   label: string;
-//   specification: string;
-//   referenceUrl: string;
-// }
-// export declare class Prerequisite {
-//   label: string;
-//   proficiency: Proficiency;
-//   referenceUrl: string;
-// }
+// // export declare class FirebaseEventSpeaker { *
+// //   person: firebase.firestore.DocumentReference;
+// //   organisation: firebase.firestore.DocumentReference;
+// //   position: string;
+// // }
 
 /* eslint-disable */
-const SecondStep = ({ activeStep, errors, touched }) => (
-  <GridContainer container direction='row' justify='space-evenly'>
-    <FieldWrapper sm={6}>
-      {dependencyConfig.map(item => (
-        <Field
-          key={item.key}
-          type={item.type || 'text'}
-          name={item.key}
-          render={({ field }) => (
-            <FormField
-              keyword={item.key}
-              multiline={item.multiline}
-              isTime={item.isTime}
-              {...{ errors, touched, ...field }}
-            />
-          )}
-        />
-      ))}
-    </FieldWrapper>
-    <FieldWrapper sm={6}>
-      {prerequisiteConfig.map(item => (
-        <Field
-          key={item.key}
-          type={item.type || 'text'}
-          name={item.key}
-          render={({ field }) => (
-            <FormField
-              keyword={item.key}
-              multiline={item.multiline}
-              isTime={item.isTime}
-              {...{ errors, touched, ...field }}
-            />
-          )}
-        />
-      ))}
-    </FieldWrapper>
+const SecondStep = ({ values, activeStep, errors, touched }) => (
+  <GridContainer direction='column'>
+    <FieldArray name='speakers'>
+      {({ push, remove }) => (
+        <>
+          {values.speakers &&
+            values.speakers.map((v, i) => (
+              <GridContainer key={v} spacing={16}>
+                <Grid sm={3}>
+                  <Field
+                    type='text'
+                    name={`speakers[${i}].proficiency`}
+                    render={({ field }) => (
+                      <TextField
+                        select
+                        label='proficiency'
+                        helperText='Select the proficiency'
+                        margin='dense'
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        {...field}
+                      >
+                        {['basic', 'intermediate', 'advanced'].map(option => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    )}
+                  />
+                </Grid>
+                <Grid sm={3}>
+                  <Field
+                    type='text'
+                    name={`speakers[${i}].proficiency`}
+                    render={({ field }) => (
+                      <TextField
+                        select
+                        label='proficiency'
+                        helperText='Select the proficiency'
+                        margin='dense'
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        {...field}
+                      >
+                        {['basic', 'intermediate', 'advanced'].map(option => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    )}
+                  />
+                </Grid>
+                <Grid sm={6}>
+                  <Field
+                    type='text'
+                    name={`speakers[${i}].referenceUrl`}
+                    render={({ field }) => (
+                      <FormField
+                        keyword='referenceUrl'
+                        {...{ errors, touched, ...field }}
+                      />
+                    )}
+                  />
+                </Grid>
+                <Grid sm={12}>
+                  <Divider />
+                </Grid>
+              </GridContainer>
+            ))}
+          <Button
+            onClick={() =>
+              push({ label: '', proficiency: 'basic', referenceUrl: '' })
+            }
+          >
+            Add
+          </Button>
+        </>
+      )}
+    </FieldArray>
   </GridContainer>
 );
 

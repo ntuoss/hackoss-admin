@@ -1,14 +1,31 @@
-import { ArtworkRepository } from 'hackoss';
+import { ArtworksRepository, PeopleRepository } from 'hackoss';
 import { FirebaseApp } from 'utils/firebase';
 
+async function getPeopleBase() {
+  const pplRepo = new PeopleRepository(FirebaseApp);
+  const people = await pplRepo.getPeople();
+  return people;
+}
+export async function getPeople() {
+  const people = await getPeopleBase();
+  return people.map(person => person.name);
+}
+
 export function getArtworks() {
-  const awRepo = new ArtworkRepository(FirebaseApp);
+  const pplRepo = new PeopleRepository(FirebaseApp);
+  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
   awRepo.getArtworks().then(artwork => {
     console.log(artwork);
   });
 }
 
-export function createPerson(artwork) {
-  const awRepo = new ArtworkRepository(FirebaseApp);
-  awRepo.createArtwork(artwork).then(getArtworks);
+export async function createArtwork(artwork) {
+  const pplRepo = new PeopleRepository(FirebaseApp);
+  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
+  let { artistId } = artwork;
+  const people = await getPeopleBase();
+  const matchedPerson = people.find(person => person.name === artistId);
+  artistId = matchedPerson.id;
+  const result = { ...artwork, artistId, eventbriteId: '' };
+  awRepo.createArtwork(result).then(getArtworks);
 }
