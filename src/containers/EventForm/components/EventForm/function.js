@@ -1,14 +1,29 @@
-import { PeopleRepository } from 'hackoss';
+import {
+  PeopleRepository,
+  ArtworksRepository,
+  OrganisationsRepository,
+} from 'hackoss';
 import { FirebaseApp } from 'utils/firebase';
 
-export function getPeople() {
+async function getPeopleBase() {
   const pplRepo = new PeopleRepository(FirebaseApp);
-  pplRepo.getPeople().then(people => {
-    console.log(people);
-  });
+  const people = await pplRepo.getPeople();
+  return people;
 }
 
-export function createPerson(people) {
+export async function getOrgs() {
+  const orgRepo = new OrganisationsRepository(FirebaseApp);
+  const orgs = orgRepo.getOrganisations();
+  return orgs;
+}
+export async function getPeople() {
+  const people = await getPeopleBase();
+  return people.map(person => person.name);
+}
+
+export async function getArtworks() {
   const pplRepo = new PeopleRepository(FirebaseApp);
-  pplRepo.createPerson(people).then(getPeople);
+  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
+  const aw = await awRepo.getArtworks();
+  return aw;
 }

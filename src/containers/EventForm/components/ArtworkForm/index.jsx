@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { Field } from 'formik';
 
 import FormBase from 'containers/EventForm/utils/FormBase';
+import Snackbar from 'components/SnackBar';
 import { createArtwork, getPeople } from './function';
 
 const config = [
@@ -14,12 +15,13 @@ const config = [
 
 const PersonForm = () => {
   const [peopleList, setPeopleList] = useState(['...']);
+  const [status, setStatus] = useState('');
   useEffect(() => {
     getPeople().then(setPeopleList);
   }, []);
 
   return (
-    <FormBase config={config} callback={createArtwork}>
+    <FormBase config={config} callback={createArtwork(setStatus)}>
       <Field
         type='text'
         name='artistId'
@@ -42,6 +44,7 @@ const PersonForm = () => {
           </TextField>
         )}
       />
+      {status && <Snackbar status={status} />}
     </FormBase>
   );
 };

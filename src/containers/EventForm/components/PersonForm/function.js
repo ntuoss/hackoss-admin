@@ -8,7 +8,7 @@ export function getPeople() {
   });
 }
 
-export function createPerson(people) {
+export const createPerson = setStatus => async people => {
   const pplRepo = new PeopleRepository(FirebaseApp);
-  pplRepo.createPerson(people).then(getPeople);
-}
+  pplRepo.createPerson(people).then(() => setStatus('success'));
+};

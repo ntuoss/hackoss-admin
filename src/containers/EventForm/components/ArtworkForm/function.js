@@ -19,7 +19,7 @@ export function getArtworks() {
   });
 }
 
-export async function createArtwork(artwork) {
+export const createArtwork = setStatus => async artwork => {
   const pplRepo = new PeopleRepository(FirebaseApp);
   const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
   let { artistId } = artwork;
@@ -27,5 +27,5 @@ export async function createArtwork(artwork) {
   const matchedPerson = people.find(person => person.name === artistId);
   artistId = matchedPerson.id;
   const result = { ...artwork, artistId, eventbriteId: '' };
-  awRepo.createArtwork(result).then(getArtworks);
-}
+  awRepo.createArtwork(result).then(() => setStatus('success'));
+};

@@ -8,7 +8,9 @@ export function getLocations() {
   });
 }
 
-export function createLocation(people) {
+export const createLocation = setStatus => async people => {
   const locRepo = new LocationsRepository(FirebaseApp);
-  locRepo.createLocation(people).then(getLocations);
-}
+  locRepo.createLocation(people).then(() => {
+    setStatus('error');
+  });
+};

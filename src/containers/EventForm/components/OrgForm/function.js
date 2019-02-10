@@ -8,7 +8,7 @@ export function getOrgs() {
   });
 }
 
-export function createOrg(org) {
+export const createOrg = setStatus => async org => {
   const orgRepo = new OrganisationsRepository(FirebaseApp);
-  orgRepo.createOrganisation(org).then(getOrgs);
-}
+  orgRepo.createOrganisation(org).then(() => setStatus('success'));
+};
