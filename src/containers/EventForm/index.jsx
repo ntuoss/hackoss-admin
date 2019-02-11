@@ -12,11 +12,14 @@ import { HeaderWrapper, Page, Grid, GridContainer, Tabs, Tab } from './style';
 
 function SimpleTabs() {
   const [value, setValue] = React.useState(0);
-  const [status, setStatus] = useState('');
+  const [status, setStatusBase] = useState('');
+
+  const setStatus = msg => {
+    setStatusBase({ msg, date: new Date() });
+  };
 
   function handleChange(event, newValue) {
     setValue(newValue);
-    setStatus('');
   }
 
   return (
@@ -47,8 +50,7 @@ function SimpleTabs() {
           {value === 4 && <LocationForm setStatus={setStatus} />}
         </Grid>
       </GridContainer>
-      {status ? <SnackBar status={status} /> : null}
-      {/* This step is error prone. TODO: better design for SnackBar */}
+      {status ? <SnackBar key={status.date} status={status.msg} /> : null}
     </Page>
   );
 }

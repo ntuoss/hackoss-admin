@@ -14,9 +14,9 @@ export async function getPeople() {
 export const createArtwork = setStatus => async input => {
   const pplRepo = new PeopleRepository(FirebaseApp);
   const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
-  const exist = awRepo.getArtworks();
-  if (exist.find(loc => loc.title === input.title)) {
-    setStatus('location existed');
+  const exist = await awRepo.getArtworks();
+  if (exist.find(aw => aw.title === input.title)) {
+    setStatus('Artwork existed');
     return null;
   }
   let { artistId } = input;

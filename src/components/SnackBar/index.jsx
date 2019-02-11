@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -12,7 +12,11 @@ import {
 } from './style';
 
 function SimpleSnackbar({ status, msg }) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    setOpen(true);
+  }, [status]);
+
   function handleClose(event, reason) {
     if (reason === 'clickaway') {
       return;
