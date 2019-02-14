@@ -48,7 +48,7 @@ const Footer = () => (
     <div>
       &copy;
       {1900 + new Date().getYear()}
-      &nbsp; made with ❤️ by NTUOSS
+      &nbsp; made with ❤ by NTUOSS
     </div>
   </Wrapper>
 );

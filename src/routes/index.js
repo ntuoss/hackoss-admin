@@ -1,10 +1,9 @@
-import { Dashboard, Person, Class, Event } from '@material-ui/icons';
+import { Dashboard, Person, Event } from '@material-ui/icons';
 
 import AppEntry from 'layout/Dashboard';
 import SignInPage from 'containers/SignIn';
 import DashboardPage from 'containers/Dashboard';
 import UserPage from 'containers/User';
-import CoursePage from 'containers/Course';
 import EventFormPage from 'containers/EventForm';
 
 export const DASHBOARD = '/';
@@ -42,13 +41,6 @@ export const APP_ROUTE = [
     navbarName: 'User Profile',
     icon: Person,
     component: UserPage,
-  },
-  {
-    path: COURSE,
-    sidebarName: 'Crouses',
-    navbarName: 'Courses',
-    icon: Class,
-    component: CoursePage,
   },
   {
     path: EVENT_FORM,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  * { box-sizing : border-box; }
   html {
     color: ${props => props.theme.primaryColor};
     background: ${props => props.theme.backgroundColor};
@@ -28,6 +29,8 @@ const theme = {
   secondaryColor: '#fffe',
   highlightColor: 'DeepSkyBlue',
   hintColor: '#777',
+  success: '#4cbb17fa',
+  error: '#ee0809',
 };
 
 const StyledTheme = ({ children }) => (

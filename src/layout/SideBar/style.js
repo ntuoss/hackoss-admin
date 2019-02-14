@@ -2,6 +2,7 @@
 
 import styled, { css } from 'styled-components';
 import { NavLink as NavLinkBase } from 'react-router-dom';
+import DividerBase from '@material-ui/core/Divider';
 
 import {
   Drawer as DrawerBase,
@@ -53,18 +54,12 @@ const SideBarHeader = styled.div`
   justify-content: flex-start;
   align-items: center;
   color: ${props => props.theme.secondaryColor};
-  box-shadow: 0 1px 7px -3px #fff;
   user-select: none;
   cursor: inherit;
   & img {
     margin: 0 0.8rem;
   }
   font-size: 1.5rem;
-`;
-
-const BreakLine = styled.hr`
-  width: 80%;
-  border-top: 0.02pt solid ${props => props.theme.secondaryColor};
 `;
 
 const List = styled(ListBase)`
@@ -127,10 +122,15 @@ const ListItemText = styled(ListItemTextBase)`
   }
 `;
 
+const Divider = styled(DividerBase)`
+  && {
+    background-color: #fff3;
+  }
+`;
 export {
   Drawer,
+  Divider,
   SideBarHeader,
-  BreakLine,
   List,
   NavLink,
   ListItem,

@@ -3,17 +3,14 @@ import { defaultFont } from 'styles/variables';
 
 const Wrapper = styled.footer`
   ${defaultFont};
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   padding: 1.5rem 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
   border-top: 0.1px solid #000a;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 const List = styled.ul`
   margin: auto 0;
