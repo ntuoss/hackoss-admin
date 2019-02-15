@@ -1,28 +1,23 @@
-import { ArtworksRepository, PeopleRepository } from 'hackoss';
-import { FirebaseApp } from 'utils/firebase';
+import { artworksRepository, peopleRepository } from '../../utils/hackoss-repo';
 
-async function getPeopleBase() {
-  const pplRepo = new PeopleRepository(FirebaseApp);
-  const people = await pplRepo.getPeople();
+async function getPeople() {
+  const people = await peopleRepository.getPeople();
   return people;
 }
-export async function getPeople() {
-  const people = await getPeopleBase();
+export async function getPeopleNames() {
+  const people = await getPeople();
   return people.map(person => person.name);
 }
 
-export const createArtwork = setStatus => async input => {
-  const pplRepo = new PeopleRepository(FirebaseApp);
-  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
-  const exist = await awRepo.getArtworks();
-  if (exist.find(aw => aw.title === input.title)) {
-    setStatus('Artwork existed');
-    return null;
-  }
-  let { artistId } = input;
-  const people = await getPeopleBase();
-  const matchedPerson = people.find(person => person.name === artistId);
-  artistId = matchedPerson.id;
-  const result = { ...input, artistId, eventbriteId: '' };
-  return awRepo.createArtwork(result);
+export const createArtwork = async ({
+  title,
+  artistId: artistName,
+  ...props
+}) => {
+  const exist = await artworksRepository.getArtworks();
+  if (exist.find(aw => aw.title === title)) throw new Error('Artwork existed');
+  const names = await getPeople();
+  const artistId = names.find(name => name.name === artistName).id;
+  const result = { ...props, title, artistId };
+  return artworksRepository.createArtwork(result);
 };

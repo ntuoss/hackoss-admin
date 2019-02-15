@@ -1,12 +1,10 @@
-import { OrganisationsRepository } from 'hackoss';
-import { FirebaseApp } from 'utils/firebase';
+import { organisationsRepository } from '../../utils/hackoss-repo';
 
-export default setStatus => async input => {
-  const orgRepo = new OrganisationsRepository(FirebaseApp);
-  const exist = await orgRepo.getOrganisations();
+/* eslint-disable */
+export const createOrg = async input => {
+  const exist = await organisationsRepository.getOrganisations();
   if (exist.find(org => org.name === input.name)) {
-    setStatus('This org exsited in the database');
-    return null;
+    throw new Error('This org exsited in the database');
   }
-  return orgRepo.createOrganisation(input);
+  return organisationsRepository.createOrganisation(input);
 };

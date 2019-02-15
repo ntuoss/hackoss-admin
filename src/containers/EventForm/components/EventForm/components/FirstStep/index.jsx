@@ -51,6 +51,8 @@ const FirstStep = ({ activeStep, errors, touched }) => {
           {booleanConfig.map(item => (
             <Field
               key={item.key}
+              name={item.key}
+              label={item.key}
               component={({
                 field: { value, ...others },
                 form: { errors, touched, setFieldValue },
@@ -71,8 +73,6 @@ const FirstStep = ({ activeStep, errors, touched }) => {
                   }
                 />
               )}
-              name={item.key}
-              label={item.key}
             />
           ))}
         </Grid>

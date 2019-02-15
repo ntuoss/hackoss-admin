@@ -18,10 +18,10 @@ async function getLocationsBase() {
 }
 export async function getArtworks() {
   const data = await getArtworksBase();
-  return data.length > 0 ? data.map(item => item.title) : ['Nothing created'];
+  return data.length > 0 ? data.map(item => item.title) : [''];
 }
 
 export async function getLocations() {
   const data = await getLocationsBase();
-  return data.length > 0 ? data.map(item => item.name) : ['Nothing created'];
+  return data.length > 0 ? data.map(item => item.name) : [''];
 }

@@ -6,7 +6,7 @@ import { Formik, Field } from 'formik';
 import FormField from 'components/FormField';
 import { Form } from './style';
 
-const FormBase = ({ setStatus, config, callback, children }) => (
+const FormBase = ({ setStatus, config, callback, validate, children }) => (
   <Formik
     initialValues={config.reduce(
       (agg, value) => ({
@@ -21,12 +21,13 @@ const FormBase = ({ setStatus, config, callback, children }) => (
           setStatus('success');
         })
         .catch(e => {
-          setStatus(e);
+          setStatus(e.message);
         })
         .finally(() => {
           setSubmitting(false);
         });
     }}
+    validate={validate}
   >
     {({ isSubmitting }) => (
       <Form>
@@ -37,7 +38,9 @@ const FormBase = ({ setStatus, config, callback, children }) => (
                 key={item.key}
                 type={item.type || 'text'}
                 name={item.key}
-                render={FormField}
+                render={props => (
+                  <FormField multiline={item.multiline} {...props} />
+                )}
               />
             ),
         )}
@@ -51,12 +54,14 @@ const FormBase = ({ setStatus, config, callback, children }) => (
 );
 
 FormBase.defaultProps = {
+  validate: () => {},
   children: null,
 };
 FormBase.propTypes = {
   setStatus: PropTypes.func.isRequired,
   config: PropTypes.arrayOf(PropTypes.object).isRequired,
   callback: PropTypes.func.isRequired,
+  validate: PropTypes.func,
   children: PropTypes.element,
 };
 export default FormBase;

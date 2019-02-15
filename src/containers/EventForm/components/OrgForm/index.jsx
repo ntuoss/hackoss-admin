@@ -2,7 +2,7 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 
 import FormBase from 'containers/EventForm/utils/FormBase';
-import createOrg from './function';
+import { createOrg } from './function';
 
 const config = [
   { key: 'avatarUrl', value: '' },
@@ -14,10 +14,11 @@ const config = [
 
 const OrgForm = ({ setStatus }) => {
   return (
+    // prettier-ignore
     <FormBase
       setStatus={setStatus}
       config={config}
-      callback={createOrg(setStatus)}
+      callback={createOrg}
     />
   );
 };

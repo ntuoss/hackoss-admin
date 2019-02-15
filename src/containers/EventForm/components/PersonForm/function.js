@@ -1,12 +1,10 @@
-import { PeopleRepository } from 'hackoss';
-import { FirebaseApp } from 'utils/firebase';
+import { peopleRepository } from '../../utils/hackoss-repo';
 
-export default setStatus => async input => {
-  const pplRepo = new PeopleRepository(FirebaseApp);
-  const existingPeople = await pplRepo.getPeople();
+/* eslint-disable */
+export const createPerson = async input => {
+  const existingPeople = await peopleRepository.getPeople();
   if (existingPeople.find(person => person.name === input.name)) {
-    setStatus('This person exsited in the database');
-    return null;
+    throw new Error('This person exsited in the database');
   }
-  return pplRepo.createPerson(input);
+  return peopleRepository.createPerson(input);
 };

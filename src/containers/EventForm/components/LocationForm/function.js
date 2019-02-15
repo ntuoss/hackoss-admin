@@ -1,13 +1,9 @@
-import { LocationsRepository } from 'hackoss';
-import { FirebaseApp } from 'utils/firebase';
+import { locationsRepository } from '../../utils/hackoss-repo';
 
-// Should use validation. but we will stick to this for now
-export default setStatus => async input => {
-  const locRepo = new LocationsRepository(FirebaseApp);
-  const exist = await locRepo.getLocations();
-  if (exist.find(loc => loc.name === input.name)) {
-    setStatus('location existed');
-    return null;
-  }
-  return locRepo.createLocation(input);
+/* eslint-disable */
+export const createLocation = async input => {
+  const repoLocations = await locationsRepository.getLocations();
+  if (repoLocations.find(loc => loc.name === input.name))
+    throw new Error('location existed');
+  return locationsRepository.createLocation(input);
 };
