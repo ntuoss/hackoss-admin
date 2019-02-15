@@ -1,31 +1,19 @@
 import {
-  PeopleRepository,
-  ArtworksRepository,
-  OrganisationsRepository,
-  LocationsRepository,
-  EventsRepository,
-} from 'hackoss';
-import { FirebaseApp } from 'utils/firebase';
+  artworksRepository,
+  locationsRepository,
+  peopleRepository,
+  organisationsRepository,
+  eventsRepository,
+} from '../../utils/hackoss-repo';
 
-export default async function createEvent(data) {
-  const pplRepo = new PeopleRepository(FirebaseApp);
-  const locRepo = new LocationsRepository(FirebaseApp);
-  const orgRepo = new OrganisationsRepository(FirebaseApp);
-  const awRepo = new ArtworksRepository(FirebaseApp, pplRepo);
-  const eventRepo = new EventsRepository(
-    FirebaseApp,
-    pplRepo,
-    locRepo,
-    orgRepo,
-    awRepo,
-  );
-  /* eslint-disable */
+/* eslint-disable */
+export const createEvent = async data => {
   let { banner, venue, speakers, startTime, endTime, ...others } = data;
   /* eslint-enable */
-  const aw = await awRepo.getArtworks();
-  const loc = await locRepo.getLocations();
-  const ppl = await pplRepo.getPeople();
-  const org = await orgRepo.getOrganisations();
+  const aw = await artworksRepository.getArtworks();
+  const loc = await locationsRepository.getLocations();
+  const ppl = await peopleRepository.getPeople();
+  const org = await organisationsRepository.getOrganisations();
   startTime = new Date(startTime);
   endTime = new Date(endTime);
   const bannerId = aw.find(item => item.title === banner).id;
@@ -38,5 +26,5 @@ export default async function createEvent(data) {
   });
 
   const result = { ...data, bannerId, venueId, speakers, startTime, endTime };
-  return eventRepo.createEvent(result);
-}
+  return eventsRepository.createEvent(result);
+};

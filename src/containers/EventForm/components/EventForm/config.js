@@ -13,7 +13,10 @@ const speakerConfig = [
   { key: 'organisation' },
   { key: 'position' },
 ];
-// prettier-ignore
+
+/* eslint-disable */
+// these two are optional field that
+// shouldn't be dealt with on front end
 const facebook = [
   { key: 'id' },
   { key: 'status', value: 'draft' },
@@ -28,7 +31,7 @@ const eventbrite = [
 const configReducer = config =>
   config.reduce(
     (agg, value) => ({
-      [value.key]: value.value || '',
+      [value.key]: value.value || value.value === false ? value.value : '',
       ...agg,
     }),
     {},
@@ -64,8 +67,6 @@ export const initConfig = {
   venue: '',
   banner: '',
   status: 'draft',
-  facebook: configReducer(facebook),
-  eventbrite: configReducer(eventbrite),
   dependencies: [configReducer(dependencyConfig)],
   prerequisites: [configReducer(prerequisiteConfig)],
   speakers: [configReducer(speakerConfig)],

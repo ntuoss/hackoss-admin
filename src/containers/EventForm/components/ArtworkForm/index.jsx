@@ -5,7 +5,7 @@ import { Field } from 'formik';
 
 import FormField from 'components/FormField';
 import FormBase from 'containers/EventForm/utils/FormBase';
-import { createArtwork, getPeople } from './function';
+import { createArtwork, getPeopleNames } from './function';
 
 const config = [
   { key: 'title', value: '' },
@@ -18,18 +18,14 @@ const ArtworkForm = ({ setStatus }) => {
   let isMounted;
   useEffect(() => {
     isMounted = true;
-    getPeople().then(val => isMounted && setPeople(val));
+    getPeopleNames().then(val => isMounted && setPeople(val));
     return () => {
       isMounted = false;
     };
   }, []);
 
   return (
-    <FormBase
-      setStatus={setStatus}
-      config={config}
-      callback={createArtwork(setStatus)}
-    >
+    <FormBase setStatus={setStatus} config={config} callback={createArtwork}>
       <Field
         type='text'
         name='artistId'

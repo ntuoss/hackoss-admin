@@ -14,7 +14,7 @@ const Dashboard = () => (
     {/* prettier-ignore */}
     <SideBar
       routes={APP_ROUTE}
-      title="NTU Iceberx"
+      title="Iceberx"
     />
     <Main>
       <Header routes={APP_ROUTE} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 import FormBase from 'containers/EventForm/utils/FormBase';
-import createPerson from './function';
+import { createPerson } from './function';
 
 const config = [
   { key: 'avatarUrl', value: '' },
@@ -13,10 +13,11 @@ const config = [
 
 const PersonForm = ({ setStatus }) => {
   return (
+    // prettier-ignore
     <FormBase
       setStatus={setStatus}
       config={config}
-      callback={createPerson(setStatus)}
+      callback={createPerson}
     />
   );
 };

@@ -51,15 +51,26 @@ const FirstStep = ({ activeStep, errors, touched }) => {
           {booleanConfig.map(item => (
             <Field
               key={item.key}
-              type={item.type || 'text'}
               name={item.key}
-              render={props => (
+              label={item.key}
+              component={({
+                field: { value, ...others },
+                form: { errors, touched, setFieldValue },
+                label,
+                ...props
+              }) => (
                 <FormControlLabel
                   keyword={item.key}
-                  control={
-                    <Checkbox color='primary' {...props} value='false' />
-                  }
                   label={item.key}
+                  control={
+                    <Checkbox
+                      color='primary'
+                      value={value.toString()}
+                      checked={value}
+                      {...props}
+                      {...others}
+                    />
+                  }
                 />
               )}
             />
